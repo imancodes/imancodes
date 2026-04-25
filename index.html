@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iman S. Cumberbatch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PALETTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+–sky-top:    #0A1628;
+–sky-mid:    #0D2040;
+–sky-low:    #1A3A5C;
+–sky-dawn:   #2A5580;
+–gold:       #F0C040;
+–gold-lt:    #F8D870;
+–gold-glow:  rgba(240,192,64,0.18);
+–pink:       #E87090;
+–teal:       #40D0B0;
+–cream:      #F0EEE8;
+–cream-dim:  rgba(240,238,232,0.6);
+–cream-faint:rgba(240,238,232,0.3);
+–card-bg:    rgba(10,22,40,0.72);
+–card-border:rgba(240,192,64,0.14);
+–card-hover: rgba(240,192,64,0.22);
+}
+
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+font-family:‘Outfit’,sans-serif;
+color:var(–cream);
+overflow-x:hidden;
+min-height:100vh;
+cursor:none;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SKY BACKGROUND — fixed, layered
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.sky {
+position:fixed;
+inset:0;
+z-index:0;
+background:
+radial-gradient(ellipse 80% 60% at 20% 0%,   rgba(80,120,200,0.35) 0%, transparent 60%),
+radial-gradient(ellipse 60% 40% at 80% 10%,  rgba(240,192,64,0.12) 0%, transparent 55%),
+radial-gradient(ellipse 50% 50% at 50% 100%, rgba(26,58,92,0.6)    0%, transparent 70%),
+linear-gradient(
+180deg,
+#060E1C 0%,
+#0A1628 18%,
+#0D2040 35%,
+#1A3A5C 55%,
+#2A5580 75%,
+#3A6890 88%,
+#507898 100%
+);
+}
+
+/* Stars */
+.stars {
+position:fixed; inset:0; z-index:1; pointer-events:none;
+background-image:
+radial-gradient(1px 1px at 10%  8%,  rgba(255,255,255,0.9) 0%, transparent 100%),
+radial-gradient(1px 1px at 22%  4%,  rgba(255,255,255,0.7) 0%, transparent 100%),
+radial-gradient(1px 1px at 35%  12%, rgba(255,255,255,0.8) 0%, transparent 100%),
+radial-gradient(1px 1px at 48%  6%,  rgba(255,255,255,0.6) 0%, transparent 100%),
+radial-gradient(1px 1px at 60%  9%,  rgba(255,255,255,0.9) 0%, transparent 100%),
+radial-gradient(1px 1px at 72%  3%,  rgba(255,255,255,0.7) 0%, transparent 100%),
+radial-gradient(1px 1px at 85%  14%, rgba(255,255,255,0.8) 0%, transparent 100%),
+radial-gradient(1px 1px at 93%  7%,  rgba(255,255,255,0.6) 0%, transparent 100%),
+radial-gradient(1.5px 1.5px at 15% 16%, rgba(255,255,255,0.5) 0%, transparent 100%),
+radial-gradient(1.5px 1.5px at 28% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+radial-gradient(1.5px 1.5px at 55% 18%, rgba(255,255,255,0.6) 0%, transparent 100%),
+radial-gradient(1.5px 1.5px at 78% 22%, rgba(255,255,255,0.5) 0%, transparent 100%),
+radial-gradient(1px 1px at 5%   18%, rgba(255,255,255,0.35) 0%, transparent 100%),
+radial-gradient(1px 1px at 40%  24%, rgba(255,255,255,0.3)  0%, transparent 100%),
+radial-gradient(1px 1px at 65%  27%, rgba(255,255,255,0.4)  0%, transparent 100%),
+radial-gradient(1px 1px at 88%  19%, rgba(255,255,255,0.35) 0%, transparent 100%),
+/* Golden star */
+radial-gradient(2px 2px at 32%  5%,  rgba(240,192,64,0.9)  0%, transparent 100%);
+}
+
+/* Horizon glow — dawn/dusk warmth */
+.horizon {
+position:fixed;
+bottom:0; left:0; right:0;
+height:35%;
+z-index:1;
+pointer-events:none;
+background:linear-gradient(
+to top,
+rgba(80,40,20,0.25) 0%,
+rgba(180,100,40,0.12) 30%,
+transparent 100%
+);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CSS CLOUDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.clouds {
+position:fixed; inset:0; z-index:2; pointer-events:none; overflow:hidden;
+}
+
+.cloud {
+position:absolute;
+border-radius:50px;
+background:rgba(255,255,255,0.06);
+filter:blur(1px);
+animation:drift linear infinite;
+}
+
+/* Cloud builder — main body + bumps via box-shadow */
+.cloud::before,
+.cloud::after {
+content:’’;
+position:absolute;
+border-radius:50%;
+background:inherit;
+}
+
+/* BIG CLOUDS */
+.c1 {
+width:280px; height:60px;
+top:18%; left:-300px;
+background:rgba(255,255,255,0.055);
+animation-duration:90s; animation-delay:0s;
+box-shadow:
+60px -28px 0 rgba(255,255,255,0.055),
+130px -18px 0 20px rgba(255,255,255,0.04),
+200px -8px  0 10px rgba(255,255,255,0.035);
+}
+.c1::before { width:120px; height:90px; top:-40px; left:50px; }
+.c1::after  { width:90px;  height:70px; top:-28px; left:130px; }
+
+.c2 {
+width:220px; height:50px;
+top:28%; left:-250px;
+background:rgba(255,255,255,0.04);
+animation-duration:120s; animation-delay:-30s;
+box-shadow:
+50px -22px 0 rgba(255,255,255,0.04),
+110px -12px 0 14px rgba(255,255,255,0.03);
+}
+.c2::before { width:100px; height:75px; top:-35px; left:40px; }
+.c2::after  { width:75px;  height:58px; top:-24px; left:110px; }
+
+.c3 {
+width:340px; height:70px;
+top:14%; left:-380px;
+background:rgba(255,255,255,0.045);
+animation-duration:110s; animation-delay:-55s;
+box-shadow:
+80px -32px 0 rgba(255,255,255,0.045),
+170px -20px 0 22px rgba(255,255,255,0.035),
+260px -10px 0 12px rgba(255,255,255,0.03);
+}
+.c3::before { width:140px; height:100px; top:-48px; left:70px; }
+.c3::after  { width:110px; height:80px;  top:-32px; left:170px; }
+
+/* MEDIUM CLOUDS */
+.c4 {
+width:180px; height:44px;
+top:35%; left:-200px;
+background:rgba(255,255,255,0.035);
+animation-duration:140s; animation-delay:-20s;
+box-shadow: 50px -18px 0 rgba(255,255,255,0.035), 100px -10px 0 10px rgba(255,255,255,0.025);
+}
+.c4::before { width:80px; height:60px; top:-28px; left:40px; }
+.c4::after  { width:65px; height:48px; top:-20px; left:90px; }
+
+.c5 {
+width:200px; height:48px;
+top:42%; left:-220px;
+background:rgba(255,255,255,0.03);
+animation-duration:160s; animation-delay:-75s;
+box-shadow: 55px -20px 0 rgba(255,255,255,0.03), 110px -12px 0 12px rgba(255,255,255,0.022);
+}
+.c5::before { width:85px; height:65px; top:-30px; left:45px; }
+.c5::after  { width:70px; height:52px; top:-22px; left:100px; }
+
+.c6 {
+width:160px; height:40px;
+top:22%; left:-180px;
+background:rgba(255,255,255,0.038);
+animation-duration:100s; animation-delay:-42s;
+box-shadow: 44px -16px 0 rgba(255,255,255,0.038), 90px -10px 0 8px rgba(255,255,255,0.028);
+}
+.c6::before { width:72px; height:54px; top:-26px; left:36px; }
+.c6::after  { width:58px; height:44px; top:-18px; left:80px; }
+
+/* WISPY SMALL */
+.c7 {
+width:120px; height:28px;
+top:50%; left:-140px;
+background:rgba(255,255,255,0.025);
+animation-duration:180s; animation-delay:-90s;
+box-shadow: 35px -10px 0 rgba(255,255,255,0.025);
+}
+.c8 {
+width:140px; height:32px;
+top:58%; left:-160px;
+background:rgba(255,255,255,0.02);
+animation-duration:200s; animation-delay:-110s;
+box-shadow: 40px -12px 0 rgba(255,255,255,0.02);
+}
+
+@keyframes drift {
+from { transform:translateX(0); }
+to   { transform:translateX(calc(100vw + 500px)); }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CURSOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cur {
+width:8px; height:8px;
+background:var(–gold);
+border-radius:50%;
+position:fixed; pointer-events:none; z-index:9999;
+transform:translate(-50%,-50%);
+transition:transform 0.12s, background 0.2s;
+}
+.cur-r {
+width:28px; height:28px;
+border:1px solid rgba(240,192,64,0.4);
+border-radius:50%;
+position:fixed; pointer-events:none; z-index:9998;
+transform:translate(-50%,-50%);
+transition:all 0.08s;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SKIP NAV
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.skip {
+position:absolute; top:-60px; left:16px;
+background:var(–gold); color:#000;
+padding:8px 18px; font-size:0.76rem; font-weight:700;
+text-decoration:none; z-index:9999;
+border-radius:0 0 6px 6px; transition:top 0.2s;
+}
+.skip:focus { top:0; }
+:focus-visible { outline:2px solid var(–gold); outline-offset:3px; }
+
+/* All content above sky */
+nav, main, footer { position:relative; z-index:10; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NAV
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+nav {
+background:rgba(6,14,28,0.82);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(240,192,64,0.12);
+padding:0 64px;
+position:sticky; top:0; z-index:100;
+}
+.nav-in {
+max-width:1380px; margin:0 auto;
+display:flex; justify-content:space-between; align-items:center;
+height:54px;
+}
+.nav-logo {
+font-family:‘Dancing Script’,cursive;
+font-size:1.4rem; font-weight:700;
+color:var(–gold); text-decoration:none;
+}
+.nav-links { display:flex; gap:32px; list-style:none; }
+.nav-links a {
+font-family:‘DM Mono’,monospace;
+font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase;
+color:var(–cream-dim); text-decoration:none; transition:color 0.2s;
+}
+.nav-links a:hover { color:var(–gold); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HERO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hero {
+min-height:calc(100vh - 54px);
+max-width:1380px; margin:0 auto;
+padding:64px 64px 48px;
+display:grid;
+grid-template-columns:1fr 340px;
+gap:52px;
+align-items:center;
+}
+
+.hero-left {}
+
+.land {
+font-family:‘DM Mono’,monospace;
+font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase;
+color:rgba(240,192,64,0.6);
+margin-bottom:22px;
+display:flex; align-items:center; gap:10px;
+border-left:2px solid rgba(240,192,64,0.35);
+padding-left:12px; line-height:1.6;
+}
+
+/* Name */
+.hero-name {
+font-family:‘Bebas Neue’,sans-serif;
+font-size:clamp(5rem,11vw,11rem);
+line-height:0.88; letter-spacing:0.02em;
+color:var(–cream);
+margin-bottom:6px;
+}
+.hero-name .script {
+font-family:‘Dancing Script’,cursive;
+font-size:0.42em; color:var(–gold);
+display:block; line-height:1.2;
+letter-spacing:0.01em;
+}
+
+/* Tagline — rewritten, no highlights */
+.hero-tagline {
+font-family:‘Outfit’,sans-serif;
+font-size:clamp(0.95rem,1.4vw,1.15rem);
+color:var(–cream-dim);
+line-height:1.85;
+max-width:520px;
+margin-bottom:32px;
+font-weight:300;
+}
+
+.hero-tagline strong {
+color:var(–cream);
+font-weight:600;
+}
+
+/* Stat strip */
+.stats {
+display:flex; gap:1px;
+background:rgba(240,192,64,0.1);
+border:1px solid rgba(240,192,64,0.14);
+border-radius:10px; overflow:hidden;
+margin-bottom:28px;
+}
+.stat {
+flex:1; padding:14px 10px; text-align:center;
+background:rgba(6,14,28,0.55);
+transition:background 0.2s;
+}
+.stat:hover { background:rgba(240,192,64,0.08); }
+.sn {
+font-family:‘Bebas Neue’,sans-serif;
+font-size:1.9rem; line-height:1;
+color:var(–gold); margin-bottom:3px;
+}
+.sl {
+font-family:‘DM Mono’,monospace;
+font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase;
+color:var(–cream-faint);
+}
+
+/* Buttons */
+.btns { display:flex; gap:10px; flex-wrap:wrap; }
+.btn-g {
+padding:11px 28px;
+background:var(–gold); color:#060E1C;
+font-family:‘Bebas Neue’,sans-serif;
+font-size:1.1rem; letter-spacing:0.1em;
+text-decoration:none; border-radius:8px;
+transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+display:inline-block;
+}
+.btn-g:hover { background:var(–gold-lt); transform:translateY(-3px); box-shadow:0 10px 28px rgba(240,192,64,0.25); }
+.btn-o {
+padding:11px 28px;
+background:transparent; color:var(–cream);
+border:1.5px solid rgba(240,238,232,0.2);
+font-family:‘Bebas Neue’,sans-serif;
+font-size:1.1rem; letter-spacing:0.1em;
+text-decoration:none; border-radius:8px;
+transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+display:inline-block;
+}
+.btn-o:hover { border-color:var(–gold); color:var(–gold); transform:translateY(-2px); }
+
+/* Hero right sidebar */
+.hero-right {
+display:flex; flex-direction:column; gap:10px;
+}
+
+.hcard {
+background:var(–card-bg);
+border:1px solid var(–card-border);
+border-radius:12px; padding:16px 18px;
+backdrop-filter:blur(12px);
+transition:border-color 0.2s;
+}
+.hcard:hover { border-color:var(–card-hover); }
+
+/* ============================================
+PHOTO — HEADSHOT
+Replace .ph-slot with:
+<img src="YOUR_HEADSHOT.jpg" alt="Iman Cumberbatch"
+style="width:100%;height:220px;object-fit:cover;
+border-radius:10px;display:block;margin-bottom:10px;">
+============================================ */
+.ph-slot {
+width:100%; height:210px;
+background:rgba(240,192,64,0.05);
+border:1px dashed rgba(240,192,64,0.2);
+border-radius:10px; margin-bottom:10px;
+display:flex; align-items:center; justify-content:center;
+}
+.ph-slot span {
+font-family:‘DM Mono’,monospace;
+font-size:0.56rem; letter-spacing:0.12em; text-transform:uppercase;
+color:rgba(240,192,64,0.4);
+}
+
+.avail {
+display:inline-flex; align-items:center; gap:6px;
+padding:5px 12px;
+background:rgba(64,208,176,0.08);
+border:1px solid rgba(64,208,176,0.25);
+border-radius:100px;
+font-family:‘DM Mono’,monospace;
+font-size:0.58rem; letter-spacing:0.08em;
+color:var(–teal);
+}
+.adot { width:6px; height:6px; border-radius:50%; background:var(–teal); animation:blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+.hc-lbl {
+font-family:‘DM Mono’,monospace;
+font-size:0.52rem; letter-spacing:0.16em; text-transform:uppercase;
+color:var(–cream-faint); margin-bottom:8px; display:block;
+}
+.pill-wrap { display:flex; flex-wrap:wrap; gap:5px; }
+.pill {
+font-family:‘DM Mono’,monospace;
+font-size:0.54rem; padding:2px 8px;
+border:1px solid rgba(240,192,64,0.18);
+border-radius:100px;
+color:rgba(240,192,64,0.7);
+background:rgba(240,192,64,0.05);
+transition:all 0.15s;
+}
+.pill:hover { background:rgba(240,192,64,0.14); color:var(–gold); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LOGO STRIP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.logo-sec {
+max-width:1380px; margin:0 auto;
+padding:0 64px 56px;
+}
+.ls-lbl {
+font-family:‘DM Mono’,monospace;
+font-size:0.52rem; letter-spacing:0.18em; text-transform:uppercase;
+color:var(–cream-faint); text-align:center; margin-bottom:18px;
+}
+.logo-row { display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap; }
+.litem { display:flex; flex-direction:column; align-items:center; gap:5px; opacity:0.4; transition:opacity 0.25s,transform 0.25s; }
+.litem:hover { opacity:1; transform:translateY(-3px); }
+.lbox {
+width:52px; height:52px;
+border:1px solid rgba(240,192,64,0.2);
+border-radius:10px;
+background:rgba(240,192,64,0.05);
+display:flex; align-items:center; justify-content:center;
+font-family:‘Bebas Neue’,sans-serif;
+font-size:0.92rem; letter-spacing:0.06em;
+color:var(–gold);
+transition:background 0.2s;
+}
+.litem:hover .lbox { background:rgba(240,192,64,0.12); }
+.lname {
+font-family:‘DM Mono’,monospace;
+font-size:0.5rem; letter-spacing:0.08em; text-transform:uppercase;
+color:var(–cream-faint);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.sec { max-width:1380px; margin:0 auto; padding:0 64px 72px; }
+
+.sec-hd {
+display:flex; align-items:flex-end; justify-content:space-between;
+margin-bottom:28px; padding-bottom:14px;
+border-bottom:1px solid rgba(240,192,64,0.12);
+}
+h2.ht {
+font-family:‘Bebas Neue’,sans-serif;
+font-size:clamp(2.8rem,5vw,4.8rem);
+line-height:0.9; letter-spacing:0.04em; color:var(–cream);
+}
+h2.ht span { color:var(–gold); }
+.eye {
+font-family:‘DM Mono’,monospace;
+font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase;
+color:var(–cream-faint); padding-bottom:4px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CARD BASE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.card {
+background:var(–card-bg);
+border:1px solid var(–card-border);
+border-radius:14px;
+backdrop-filter:blur(12px);
+transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+overflow:hidden;
+}
+.card:hover {
+border-color:var(–card-hover);
+transform:translateY(-5px);
+box-shadow:0 16px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(240,192,64,0.08);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+JOURNEY — 4 ACROSS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.j4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+
+.jc { padding:22px 18px 20px; position:relative; overflow:hidden; }
+.jc::before {
+content:’’; position:absolute; top:0; left:0; right:0; height:2px;
+background:var(–gold);
+transform:scaleX(0); transform-origin:left; transition:transform 0.3s;
+}
+.jc:hover::before { transform:scaleX(1); }
+.jc.now { background:rgba(240,192,64,0.1); border-color:rgba(240,192,64,0.3); }
+
+.jnum {
+font-family:‘Bebas Neue’,sans-serif;
+font-size:4rem; line-height:1;
+color:rgba(240,192,64,0.08);
+position:absolute; top:8px; right:14px; pointer-events:none;
+}
+.jyr {
+font-family:‘DM Mono’,monospace;
+font-size:0.54rem; letter-spacing:0.14em; text-transform:uppercase;
+color:rgba(240,192,64,0.6); margin-bottom:8px;
+}
+.jc.now .jyr { color:var(–gold); }
+.jc h3 {
+font-family:‘Bebas Neue’,sans-serif;
+font-size:1.35rem; letter-spacing:0.04em;
+color:var(–cream); margin-bottom:8px; line-height:1.05;
+}
+.jc p { font-size:0.78rem; color:var(–cream-dim); line-height:1.7; margin-bottom:12px; }
+.chips { display:flex; flex-wrap:wrap; gap:4px; }
+.chip {
+font-family:‘DM Mono’,monospace;
+font-size:0.5rem; padding:2px 7px;
+border:1px solid rgba(240,238,232,0.1);
+border-radius:100px; color:var(–cream-faint);
+}
+.jc.now .chip { border-color:rgba(240,192,64,0.28); color:rgba(240,192,64,0.8); }
+.mission {
+margin-top:12px; padding:10px 12px;
+background:rgba(240,192,64,0.1); border-radius:8px;
+font-style:italic; font-size:0.76rem;
+color:rgba(240,238,232,0.75); line-height:1.6;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SKILLS — 6 ACROSS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.sk6 { display:grid; grid-template-columns:repeat(6,1fr); gap:10px; }
+.skc { padding:18px 14px; position:relative; overflow:hidden; }
+.skc::after {
+content:’’; position:absolute; top:0; left:0; right:0; height:2px;
+background:var(–teal);
+transform:scaleX(0); transform-origin:left; transition:transform 0.3s;
+}
+.skc:hover::after { transform:scaleX(1); }
+.skc h3 {
+font-family:‘Bebas Neue’,sans-serif;
+font-size:0.95rem; letter-spacing:0.06em;
+color:var(–cream); margin-bottom:10px;
+}
+.sktags { display:flex; flex-wrap:wrap; gap:4px; }
+.skt {
+font-family:‘DM Mono’,monospace;
+font-size:0.52rem; padding:2px 7px;
+background:rgba(64,208,176,0.06);
+border:1px solid rgba(64,208,176,0.12);
+border-radius:100px; color:var(–cream-dim);
+transition:all 0.15s;
+}
+.skt:hover { background:rgba(64,208,176,0.14); border-color:rgba(64,208,176,0.3); color:var(–teal); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXPERIENCE — 3 ACROSS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.exp3 { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.ec .ec-top {
+padding:16px 18px 12px;
+border-bottom:1px solid rgba(240,192,64,0.08);
+}
+.ec .ec-co {
+font-family:‘DM Mono’,monospace;
+font-size:0.54rem; letter-spacing:0.12em; text-transform:uppercase;
+color:var(–pink); margin-bottom:4px;
+}
+.ec .ec-t {
+font-family:‘Bebas Neue’,sans-serif;
+font-size:1.05rem; letter-spacing:0.04em;
+color:var(–cream); line-height:1.1;
+}
+.ec .ec-d {
+font-family:‘DM Mono’,monospace;
+font-size:0.5rem; color:var(–cream-faint); margin-top:3px;
+}
+.ec .ec-body { padding:12px 18px 16px; }
+.ec .ep {
+font-size:0.76rem; color:var(–cream-dim);
+line-height:1.65; padding-left:11px; position:relative; margin-bottom:4px;
+}
+.ec .ep::before {
+content:’’; position:absolute; left:0; top:8px;
+width:3px; height:3px; border-radius:50%; background:var(–gold);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PUBLICATIONS — BENTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.pub-bento {
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+grid-template-rows:auto auto;
+gap:10px;
+}
+.pb { padding:18px 18px 14px; }
+.pb.feat { background:rgba(240,192,64,0.1); border-color:rgba(240,192,64,0.28); grid-row:span 2; }
+.pb.under { background:rgba(232,112,144,0.07); border-color:rgba(232,112,144,0.22); }
+
+.pv {
+font-family:‘DM Mono’,monospace;
+font-size:0.52rem; letter-spacing:0.14em; text-transform:uppercase;
+color:var(–gold); margin-bottom:7px;
+display:flex; align-items:center; gap:6px;
+}
+.pv::before { content:’’; width:8px; height:1px; background:var(–gold); }
+.pb.under .pv { color:var(–pink); }
+.pb.under .pv::before { background:var(–pink); }
+
+.pt {
+font-family:‘Outfit’,sans-serif;
+font-weight:500; font-size:0.86rem;
+color:var(–cream); line-height:1.4; margin-bottom:6px;
+}
+.pa { font-size:0.72rem; color:var(–cream-faint); line-height:1.5; }
+.pa strong { color:var(–cream-dim); }
+.pbadge {
+display:inline-block; margin-top:8px;
+font-family:‘DM Mono’,monospace;
+font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase;
+padding:2px 8px; border:1px solid rgba(240,192,64,0.2);
+border-radius:100px; color:rgba(240,192,64,0.55);
+}
+.pb.under .pbadge { border-color:rgba(232,112,144,0.25); color:rgba(232,112,144,0.65); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SPEAKING — 2 WIDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.sp2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.spc { padding:26px 24px; position:relative; overflow:hidden; }
+.spc::before {
+content:’’; position:absolute; top:0; left:0; right:0; height:2px;
+background:linear-gradient(90deg,var(–gold),var(–teal));
+}
+.spc:hover { box-shadow:0 14px 36px rgba(240,192,64,0.1); }
+.syr {
+font-family:‘DM Mono’,monospace;
+font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase;
+color:var(–gold); margin-bottom:10px;
+}
+.spc h3 {
+font-family:‘Bebas Neue’,sans-serif;
+font-size:1.7rem; letter-spacing:0.04em;
+color:var(–cream); margin-bottom:8px; line-height:1;
+}
+.spc p { font-size:0.8rem; color:var(–cream-dim); line-height:1.7; }
+.sloc {
+display:inline-block; margin-top:12px;
+font-family:‘DM Mono’,monospace;
+font-size:0.52rem; letter-spacing:0.1em; text-transform:uppercase;
+color:var(–cream-faint); padding:2px 10px;
+border:1px solid rgba(240,238,232,0.1); border-radius:100px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GALLERY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.photo-grid {
+display:grid;
+grid-template-columns:2.2fr 1fr 1fr;
+grid-template-rows:220px 220px;
+gap:8px; border-radius:14px; overflow:hidden;
+}
+.ph-cell {
+background:rgba(240,192,64,0.06);
+border:1px solid rgba(240,192,64,0.1);
+overflow:hidden; position:relative;
+}
+.ph-cell.tall { grid-row:span 2; }
+.ph-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s; }
+.ph-cell:hover img { transform:scale(1.05); }
+.ph-ph {
+width:100%; height:100%; min-height:120px;
+display:flex; align-items:center; justify-content:center;
+background:repeating-linear-gradient(
+45deg, rgba(240,192,64,0.03), rgba(240,192,64,0.03) 8px,
+transparent 8px, transparent 16px
+);
+}
+.ph-ph span {
+font-family:‘DM Mono’,monospace;
+font-size:0.52rem; letter-spacing:0.1em; text-transform:uppercase;
+color:rgba(240,192,64,0.4);
+background:rgba(6,14,28,0.8); padding:3px 10px; border-radius:100px;
+}
+.ph-cap {
+position:absolute; bottom:0; left:0; right:0;
+padding:8px 12px;
+background:linear-gradient(transparent,rgba(6,14,28,0.75));
+font-family:‘DM Mono’,monospace;
+font-size:0.5rem; letter-spacing:0.08em; text-transform:uppercase;
+color:rgba(240,238,232,0.7);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EDUCATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.edu2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
+.educ { padding:20px 18px; }
+.educ-deg {
+font-family:‘Bebas Neue’,sans-serif;
+font-size:1.15rem; letter-spacing:0.04em;
+color:var(–cream); margin-bottom:4px; line-height:1.1;
+}
+.educ-sch {
+font-family:‘DM Mono’,monospace;
+font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase;
+color:var(–gold); margin-bottom:6px;
+}
+.educ-det { font-size:0.76rem; color:var(–cream-faint); line-height:1.6; }
+
+.cert3 { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.certc { padding:12px 16px; display:flex; align-items:center; gap:10px; }
+.cdot { width:7px; height:7px; border-radius:50%; background:var(–gold); flex-shrink:0; }
+.cdot.pend {
+background:transparent; border:2px solid var(–teal);
+animation:cpulse 2s infinite;
+}
+@keyframes cpulse { 0%,100%{border-color:var(–teal);} 50%{border-color:var(–gold);} }
+.cn { font-size:0.76rem; font-weight:500; color:var(–cream); }
+.cs { font-family:‘DM Mono’,monospace; font-size:0.54rem; color:var(–cream-faint); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONTACT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.contact-wrap { max-width:1380px; margin:0 auto; padding:0 64px 72px; }
+.contact-box {
+background:var(–card-bg);
+border:1px solid var(–card-border);
+border-radius:20px; padding:56px;
+display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;
+backdrop-filter:blur(16px);
+position:relative; overflow:hidden;
+}
+.contact-box::before {
+content:’’; position:absolute;
+width:500px; height:400px; border-radius:50%;
+background:radial-gradient(ellipse,rgba(240,192,64,0.06) 0%,transparent 70%);
+top:-120px; right:-80px; pointer-events:none;
+}
+.c-hd {
+font-family:‘Bebas Neue’,sans-serif;
+font-size:clamp(2.8rem,5vw,5rem);
+line-height:0.9; letter-spacing:0.04em;
+color:var(–cream); margin-bottom:14px;
+}
+.c-hd em { font-family:‘Dancing Script’,cursive; font-style:normal; color:var(–gold); font-size:0.8em; }
+.c-desc { font-size:0.88rem; color:var(–cream-dim); line-height:1.8; margin-bottom:18px; max-width:380px; }
+.c-witty {
+font-family:‘DM Mono’,monospace; font-style:italic;
+font-size:0.68rem; color:rgba(240,192,64,0.5); line-height:1.6;
+padding-left:14px; border-left:2px solid rgba(240,192,64,0.25);
+}
+.cl-list {
+display:flex; flex-direction:column; gap:1px;
+background:rgba(240,192,64,0.08);
+border:1px solid rgba(240,192,64,0.12);
+border-radius:12px; overflow:hidden;
+}
+.cl {
+display:flex; align-items:center; gap:12px;
+padding:13px 16px;
+background:rgba(6,14,28,0.5);
+text-decoration:none;
+border-bottom:1px solid rgba(240,192,64,0.06);
+transition:all 0.2s;
+}
+.cl:last-child { border-bottom:none; }
+.cl:hover { background:rgba(240,192,64,0.07); padding-left:22px; }
+.cl-l {
+font-family:‘DM Mono’,monospace;
+font-size:0.52rem; letter-spacing:0.1em; text-transform:uppercase;
+color:var(–cream-faint); width:60px; flex-shrink:0;
+}
+.cl-v { font-size:0.82rem; font-weight:400; color:var(–cream-dim); transition:color 0.2s; }
+.cl:hover .cl-v { color:var(–gold); }
+.cl-a { margin-left:auto; color:var(–cream-faint); font-size:0.8rem; transition:all 0.2s; }
+.cl:hover .cl-a { color:var(–gold); transform:translateX(3px); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FOOTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+footer {
+max-width:1380px; margin:0 auto; padding:0 64px 32px;
+display:flex; justify-content:space-between; align-items:center;
+}
+.ft-n { font-family:‘Dancing Script’,cursive; font-size:1.1rem; color:var(–gold); }
+.ft-c {
+font-family:‘DM Mono’,monospace;
+font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase;
+color:var(–cream-faint);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCROLL REVEAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.pop {
+opacity:0; transform:scale(0.93) translateY(12px);
+transition:opacity 0.5s, transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+.pop.in { opacity:1; transform:scale(1) translateY(0); }
+
+@media(prefers-reduced-motion:reduce) {
+*,*::before,*::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+html { scroll-behavior:auto; }
+.pop { opacity:1; transform:none; }
+body { cursor:auto; }
+.cur,.cur-r { display:none; }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RESPONSIVE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media(max-width:1100px) {
+nav,.sec,.logo-sec,.contact-wrap,footer { padding-left:28px; padding-right:28px; }
+.hero { padding:56px 28px 40px; grid-template-columns:1fr; min-height:auto; }
+.hero-right { position:static; }
+.j4,.sk6 { grid-template-columns:repeat(2,1fr); }
+.exp3,.sp2,.edu2 { grid-template-columns:1fr; }
+.pub-bento { grid-template-columns:1fr 1fr; }
+.pb.feat { grid-row:span 1; }
+.photo-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+.ph-cell.tall { grid-row:span 1; }
+.cert3 { grid-template-columns:1fr; }
+.contact-box { grid-template-columns:1fr; gap:36px; padding:36px 28px; }
+footer { flex-direction:column; gap:8px; text-align:center; }
+}
+@media(max-width:640px) {
+nav,footer { padding-left:16px; padding-right:16px; }
+.hero,.sec,.logo-sec,.contact-wrap { padding-left:16px; padding-right:16px; }
+.nav-links { gap:16px; }
+.j4,.sk6 { grid-template-columns:1fr; }
+.pub-bento { grid-template-columns:1fr; }
+.photo-grid { grid-template-columns:1fr; }
+.stats { flex-wrap:wrap; }
+.stat { flex:1 1 45%; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- SKY LAYERS -->
+
+<div class="sky" aria-hidden="true"></div>
+<div class="stars" aria-hidden="true"></div>
+<div class="horizon" aria-hidden="true"></div>
+<div class="clouds" aria-hidden="true">
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+  <div class="cloud c4"></div>
+  <div class="cloud c5"></div>
+  <div class="cloud c6"></div>
+  <div class="cloud c7"></div>
+  <div class="cloud c8"></div>
+</div>
+
+<!-- CURSOR -->
+
+<div class="cur" id="cur"></div>
+<div class="cur-r" id="curR"></div>
+
+<a href="#main" class="skip">Skip to main content</a>
+
+<!-- NAV -->
+
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="#" class="nav-logo">Iman.</a>
+    <ul class="nav-links">
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+<section class="hero" aria-labelledby="hero-h">
+
+  <div class="hero-left">
+    <p class="land">From Lenapehoking — ancestral homeland of the Lenape people</p>
+
+```
+<h1 class="hero-name" id="hero-h">
+  <span class="script">Iman S.</span>
+  CUMBERBATCH
+</h1>
+
+<p class="hero-tagline">
+  Some people build with steel. Some with code.
+  I build with <strong>data, curiosity, and a deep belief
+  that technology should serve people</strong> — not the other way around.<br><br>
+  NYU-trained. Field-tested. Published internationally.
+  Now bringing five years of program leadership, machine learning,
+  and environmental research into <strong>cybersecurity</strong> —
+  because the most urgent problems at the intersection of
+  data and human safety still need someone willing to work across every discipline to solve them.
+</p>
+
+<div class="stats" role="list">
+  <div class="stat" role="listitem"><div class="sn">5+</div><div class="sl">Yrs Consulting</div></div>
+  <div class="stat" role="listitem"><div class="sn">5</div><div class="sl">Publications</div></div>
+  <div class="stat" role="listitem"><div class="sn">2×</div><div class="sl">UN Speaker</div></div>
+  <div class="stat" role="listitem"><div class="sn">$50K</div><div class="sl">Partnership Won</div></div>
+  <div class="stat" role="listitem"><div class="sn">50+</div><div class="sl">People Led</div></div>
+</div>
+
+<div class="btns">
+  <a href="mailto:cumberbatci1@gmail.com" class="btn-g">Get in Touch</a>
+  <a href="#journey" class="btn-o">My Story</a>
+</div>
+```
+
+  </div>
+
+  <!-- RIGHT SIDEBAR -->
+
+  <aside class="hero-right" aria-label="Profile">
+
+```
+<div class="hcard">
+  <!-- ============================================
+       PHOTO — HEADSHOT
+       Replace .ph-slot with:
+       <img src="YOUR_HEADSHOT.jpg" alt="Iman Cumberbatch"
+            style="width:100%;height:220px;object-fit:cover;
+                   border-radius:10px;display:block;margin-bottom:10px;">
+       ============================================ -->
+  <div class="ph-slot"><span>Add headshot</span></div>
+  <div class="avail">
+    <span class="adot" aria-hidden="true"></span>
+    Available Now
+  </div>
+</div>
+
+<div class="hcard">
+  <span class="hc-lbl">Core Stack</span>
+  <div class="pill-wrap">
+    <span class="pill">Power BI</span><span class="pill">Python</span>
+    <span class="pill">Tableau</span><span class="pill">SQL</span>
+    <span class="pill">ArcGIS</span><span class="pill">Unity</span>
+    <span class="pill">TensorFlow</span><span class="pill">XR</span>
+    <span class="pill">Security+</span><span class="pill">GRC</span>
+  </div>
+</div>
+
+<div class="hcard">
+  <span class="hc-lbl">Open To</span>
+  <div class="pill-wrap">
+    <span class="pill">Remote</span><span class="pill">NY / CT</span>
+    <span class="pill">Data Strategy</span>
+    <span class="pill">Cybersecurity</span>
+    <span class="pill">Program Mgmt</span>
+  </div>
+</div>
+
+<div class="hcard">
+  <span class="hc-lbl">Published In</span>
+  <div style="display:flex;flex-direction:column;gap:5px;">
+    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid var(--gold);">MDPI Sustainability · 2025</div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid var(--gold);">Springer CCIS · iLRN 2025</div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid var(--gold);">IEEE LISAT · 2023</div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid var(--gold);">SPIE · 2023</div>
+  </div>
+</div>
+```
+
+  </aside>
+</section>
+
+<!-- LOGO STRIP -->
+
+<div class="logo-sec" aria-label="Organizations worked with">
+  <p class="ls-lbl">Worked with · Published through · Spoke at</p>
+  <div class="logo-row" role="list">
+    <div class="litem" role="listitem"><div class="lbox">NYU</div><span class="lname">NYU</span></div>
+    <div class="litem" role="listitem"><div class="lbox">MSU</div><span class="lname">Montclair St.</span></div>
+    <div class="litem" role="listitem"><div class="lbox" style="font-size:0.7rem;">PSEG</div><span class="lname">PSEG</span></div>
+    <div class="litem" role="listitem"><div class="lbox" style="font-size:0.65rem;">ConEd</div><span class="lname">Con Edison</span></div>
+    <div class="litem" role="listitem"><div class="lbox" style="font-size:0.6rem;">PANYNJ</div><span class="lname">Port Authority</span></div>
+    <div class="litem" role="listitem"><div class="lbox">UN</div><span class="lname">United Nations</span></div>
+    <div class="litem" role="listitem"><div class="lbox">IEEE</div><span class="lname">IEEE</span></div>
+    <div class="litem" role="listitem"><div class="lbox">SPIE</div><span class="lname">SPIE</span></div>
+    <div class="litem" role="listitem"><div class="lbox" style="font-size:0.7rem;">NSF</div><span class="lname">NSF</span></div>
+    <div class="litem" role="listitem"><div class="lbox" style="font-size:0.7rem;">NASA</div><span class="lname">NASA</span></div>
+  </div>
+</div>
+
+<!-- JOURNEY -->
+
+<div class="sec" id="journey">
+  <div class="sec-hd">
+    <h2 class="ht">THE <span>JOURNEY</span></h2>
+    <span class="eye">From Lenapehoking to the United Nations</span>
+  </div>
+  <div class="j4" role="list">
+    <article class="card jc pop" role="listitem">
+      <div class="jnum" aria-hidden="true">01</div>
+      <div class="jyr">2018 – 2022</div>
+      <h3>The Foundation</h3>
+      <p>B.S. IT at Montclair State. Systems admin, security, GIS. Learning how technology actually works so I could one day make it work better for people.</p>
+      <div class="chips"><span class="chip">IT Degree</span><span class="chip">Systems Admin</span><span class="chip">Security</span><span class="chip">GIS</span></div>
+    </article>
+
+```
+<article class="card jc pop" role="listitem">
+  <div class="jnum" aria-hidden="true">02</div>
+  <div class="jyr">2020 – 2024</div>
+  <h3>The Purpose</h3>
+  <p>At PSEG, NSF and NASA-funded programs, 50+ partner organizations, and two invitations to speak at the United Nations. Technology meets real communities.</p>
+  <div class="chips"><span class="chip">NSF / NASA</span><span class="chip">UN Speaker</span><span class="chip">50+ Orgs</span></div>
+</article>
+
+<article class="card jc pop" role="listitem">
+  <div class="jnum" aria-hidden="true">03</div>
+  <div class="jyr">2022 – 2025</div>
+  <h3>The Passion</h3>
+  <p>NYU Tandon M.S. Built ML models at Con Edison that changed New York State energy policy. Watched data change decisions in real time. There was no going back.</p>
+  <div class="chips"><span class="chip">NYU M.S.</span><span class="chip">ML Models</span><span class="chip">Power BI</span><span class="chip">5 Publications</span></div>
+</article>
+
+<article class="card jc now pop" role="listitem" aria-current="true">
+  <div class="jnum" aria-hidden="true">04</div>
+  <div class="jyr">Now</div>
+  <h3>The Mission</h3>
+  <p>IT roots. Data science depth. Program leadership. Research mind. Bringing all of it into cybersecurity — because the most important problems need people who refuse to stay in one lane.</p>
+  <div class="chips"><span class="chip">Cyber Analytics</span><span class="chip">Security+</span><span class="chip">GRC</span></div>
+  <div class="mission">"I want to use everything I know to help people stay safe in a world that runs on data."</div>
+</article>
+```
+
+  </div>
+</div>
+
+<!-- SKILLS -->
+
+<div class="sec" id="skills">
+  <div class="sec-hd">
+    <h2 class="ht">THE <span>TOOLKIT</span></h2>
+    <span class="eye">Built in the field, not just in class</span>
+  </div>
+  <div class="sk6">
+    <div class="card skc pop"><h3>Analytics &amp; BI</h3><div class="sktags"><span class="skt">Power BI</span><span class="skt">Tableau</span><span class="skt">Python</span><span class="skt">SQL</span><span class="skt">ArcGIS</span><span class="skt">DAX</span></div></div>
+    <div class="card skc pop"><h3>AI &amp; ML</h3><div class="sktags"><span class="skt">TensorFlow</span><span class="skt">PyTorch</span><span class="skt">Deep Learning</span><span class="skt">OpenAI</span><span class="skt">Hugging Face</span></div></div>
+    <div class="card skc pop"><h3>XR &amp; Viz</h3><div class="sktags"><span class="skt">Unity</span><span class="skt">C#</span><span class="skt">Meta Quest 2</span><span class="skt">Ultraleap</span><span class="skt">AutoCAD</span></div></div>
+    <div class="card skc pop"><h3>Prog. Mgmt</h3><div class="sktags"><span class="skt">Agile</span><span class="skt">SDLC</span><span class="skt">JIRA</span><span class="skt">Risk Mgmt</span><span class="skt">Budgeting</span></div></div>
+    <div class="card skc pop"><h3>Cybersecurity</h3><div class="sktags"><span class="skt">Security+</span><span class="skt">Network Sec.</span><span class="skt">Sys. Admin</span><span class="skt">Unix</span><span class="skt">NIST</span></div></div>
+    <div class="card skc pop"><h3>Dev</h3><div class="sktags"><span class="skt">Java</span><span class="skt">C++</span><span class="skt">JavaScript</span><span class="skt">HTML/CSS</span><span class="skt">Arduino</span></div></div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+
+<div class="sec" id="work">
+  <div class="sec-hd">
+    <h2 class="ht">THE <span>WORK</span></h2>
+    <span class="eye">5 years · energy · tech · sustainability</span>
+  </div>
+  <div class="exp3">
+    <article class="card ec pop">
+      <div class="ec-top">
+        <div class="ec-co">CGI · Montclair State</div>
+        <div class="ec-t">Lead Engineer — ML &amp; Data Analytics</div>
+        <div class="ec-d">Jan 2025 – Present</div>
+      </div>
+      <div class="ec-body">
+        <p class="ep">Secured CGI's first $50K partnership — Port Authority of NY/NJ</p>
+        <p class="ep">Led full Institute launch — funding, partners, consulting hub</p>
+        <p class="ep">Predictive models and GIS dashboards for infrastructure planning</p>
+        <p class="ep">Unity VR simulations for executive stakeholder engagement</p>
+      </div>
+    </article>
+    <article class="card ec pop">
+      <div class="ec-top">
+        <div class="ec-co">PSEG Institute</div>
+        <div class="ec-t">Senior Project Manager</div>
+        <div class="ec-d">2020 – Oct 2025</div>
+      </div>
+      <div class="ec-body">
+        <p class="ep">NSF/NASA programs across 50+ orgs over 6 cycles</p>
+        <p class="ep">Newark, AvalonBay, Eisai, dsm-firmenich, NJ Resources</p>
+        <p class="ep">Directed 50+ staff in data, robotics, and XR work</p>
+        <p class="ep">Budgets, contracts, and workforce development</p>
+      </div>
+    </article>
+    <article class="card ec pop">
+      <div class="ec-top">
+        <div class="ec-co">Con Edison · NYU Capstone</div>
+        <div class="ec-t">Lead Clean Energy Consultant</div>
+        <div class="ec-d">Oct 2024 – May 2025</div>
+      </div>
+      <div class="ec-body">
+        <p class="ep">Power BI dashboard delivering real-time KPIs to senior leadership</p>
+        <p class="ep">Python ML model shaped New York State energy incentive policy</p>
+        <p class="ep">Led 5-person team executing a data strategy roadmap</p>
+      </div>
+    </article>
+  </div>
+  <div class="exp3" style="margin-top:10px;">
+    <article class="card ec pop">
+      <div class="ec-top">
+        <div class="ec-co">NYU Immersive Computing Lab</div>
+        <div class="ec-t">Graduate Researcher — XR &amp; Haptics</div>
+        <div class="ec-d">Sep 2024 – Jun 2025</div>
+      </div>
+      <div class="ec-body">
+        <p class="ep">VR simulation for environmental change analysis</p>
+        <p class="ep">UltraLeap haptic feedback integration</p>
+      </div>
+    </article>
+    <article class="card ec pop">
+      <div class="ec-top">
+        <div class="ec-co">Computational Sensory Lab · MSU</div>
+        <div class="ec-t">PRELS Scholar — XR Lead</div>
+        <div class="ec-d">Sep 2022 – Sep 2023</div>
+      </div>
+      <div class="ec-body">
+        <p class="ep">VR geospatial tool for deforestation policy research</p>
+        <p class="ep">Published IEEE LISAT &amp; SPIE</p>
+      </div>
+    </article>
+    <article class="card ec pop">
+      <div class="ec-top">
+        <div class="ec-co">City of Newark Office of Sustainability</div>
+        <div class="ec-t">Green Team Intern</div>
+        <div class="ec-d">Jun – Aug 2020</div>
+      </div>
+      <div class="ec-body">
+        <p class="ep">Greenhouse gas inventory via ICLEI ClearPath</p>
+        <p class="ep">Data-informed carbon reduction recommendations</p>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- PUBLICATIONS -->
+
+<div class="sec" id="research">
+  <div class="sec-hd">
+    <h2 class="ht">PUBLISHED &amp; <span>CITED</span></h2>
+    <span class="eye">IEEE · SPIE · Springer · MDPI</span>
+  </div>
+  <div class="pub-bento">
+    <article class="card pb feat pop">
+      <div class="pv">MDPI Sustainability · 2025</div>
+      <h3 class="pt">Artificial Turf Versus Natural Grass: Environmental Effects, Health Risks, Safety &amp; Cost</h3>
+      <p class="pa"><strong>Cumberbatch, I.S.</strong> et al. · PSEG Institute, MSU</p>
+      <span class="pbadge">Journal Article</span>
+      <!-- ============================================
+           LINK: <a href="https://doi.org/10.3390/su18052188">Read →</a>
+           ============================================ -->
+    </article>
+    <article class="card pb pop">
+      <!-- ============================================
+           LINK: Add Springer CCIS link here
+           ============================================ -->
+      <div class="pv">Springer CCIS · iLRN 2025</div>
+      <h3 class="pt">Greens Do Good: AR/VR Training for Autistic Trainees</h3>
+      <p class="pa">Pagano, G., ..., <strong>Cumberbatch, I.</strong> et al.</p>
+      <span class="pbadge">Conference Paper</span>
+    </article>
+    <article class="card pb pop">
+      <!-- ============================================
+           LINK: Add IEEE LISAT link here
+           ============================================ -->
+      <div class="pv">IEEE LISAT · 2023</div>
+      <h3 class="pt">Using Extended Reality Technology in Science Education</h3>
+      <p class="pa"><strong>Cumberbatch, I.S.</strong>, Olatunji, J., &amp; Robila, S.A.</p>
+      <span class="pbadge">Conference Paper</span>
+    </article>
+    <article class="card pb pop">
+      <!-- ============================================
+           LINK: Add SPIE conference link here
+           ============================================ -->
+      <div class="pv">SPIE · Orlando, FL · 2023</div>
+      <h3 class="pt">XR Environment for Urban Area Environmental Data Analysis</h3>
+      <p class="pa"><strong>Cumberbatch, I.S.</strong> &amp; Robila, S.</p>
+      <span class="pbadge">Conference Paper</span>
+    </article>
+    <article class="card pb under pop">
+      <div class="pv">Under Press Review · 2024</div>
+      <h3 class="pt">Inclusive Team Internships in STEM as a Promising Practice for Underrepresented Groups</h3>
+      <p class="pa">Emery, E., Spinks, H., ..., <strong>Cumberbatch, I.</strong> et al.</p>
+      <span class="pbadge">New Directions in Higher Education</span>
+    </article>
+    <article class="card pb pop">
+      <div class="pv">SPIE · May 2023</div>
+      <h3 class="pt">Hands-On Introduction to Optics</h3>
+      <p class="pa">Instructor: Damon Diego · SPIE Professional Development</p>
+      <span class="pbadge">Certificate</span>
+    </article>
+  </div>
+</div>
+
+<!-- SPEAKING -->
+
+<div class="sec">
+  <div class="sec-hd">
+    <h2 class="ht">TOOK THE <span>STAGE</span></h2>
+    <span class="eye">Twice. At the United Nations.</span>
+  </div>
+  <div class="sp2">
+    <article class="card spc pop">
+      <!-- ============================================
+           IMAGE: Add above .syr:
+           <img src="YOUR_UN_2024.jpg" alt="UN HESI Forum 2024"
+                style="width:100%;height:140px;object-fit:cover;
+                       border-radius:8px;margin-bottom:16px;">
+           ============================================ -->
+      <div class="syr">July 2024</div>
+      <h3>UN HESI Global Forum</h3>
+      <p>Facilitated international discussions on enhancing green skills across all disciplines in higher education.</p>
+      <span class="sloc">United Nations HQ · New York City</span>
+    </article>
+    <article class="card spc pop">
+      <!-- ============================================
+           IMAGE: Add above .syr:
+           <img src="YOUR_UN_2023.jpg" alt="UN HESI Forum 2023"
+                style="width:100%;height:140px;object-fit:cover;
+                       border-radius:8px;margin-bottom:16px;">
+           ============================================ -->
+      <div class="syr">July 2023</div>
+      <h3>UN HESI Global Forum</h3>
+      <p>Led international discussions on sustainability, education, and technology representing Montclair State University.</p>
+      <span class="sloc">United Nations HQ · New York City</span>
+    </article>
+  </div>
+</div>
+
+<!-- GALLERY -->
+
+<div class="sec" id="gallery">
+  <div class="sec-hd">
+    <h2 class="ht">IN THE <span>FIELD</span></h2>
+    <span class="eye">Research · Speaking · Work</span>
+  </div>
+  <div class="photo-grid" role="list">
+    <!-- ============================================
+         IMAGE SLOT 1 — TALL LEFT
+         <img src="YOUR_MAIN_PHOTO.jpg" alt="[describe]">
+         ============================================ -->
+    <div class="ph-cell tall pop" role="listitem">
+      <div class="ph-ph"><span>Main photo — UN / Speaking</span></div>
+      <div class="ph-cap">UN HESI Global Forum</div>
+    </div>
+    <!-- ============================================
+         IMAGE SLOT 2 — TOP MIDDLE
+         <img src="YOUR_LAB_PHOTO.jpg" alt="NYU Lab">
+         ============================================ -->
+    <div class="ph-cell pop" role="listitem">
+      <div class="ph-ph"><span>Lab / Research</span></div>
+      <div class="ph-cap">NYU Immersive Computing Lab</div>
+    </div>
+    <!-- ============================================
+         IMAGE SLOT 3 — TOP RIGHT
+         <img src="YOUR_WORK_PHOTO.jpg" alt="Work">
+         ============================================ -->
+    <div class="ph-cell pop" role="listitem">
+      <div class="ph-ph"><span>Work / Data</span></div>
+      <div class="ph-cap">Con Edison Power BI</div>
+    </div>
+    <!-- ============================================
+         IMAGE SLOT 4 — BOTTOM MIDDLE
+         <img src="YOUR_TEAM_PHOTO.jpg" alt="Team">
+         ============================================ -->
+    <div class="ph-cell pop" role="listitem">
+      <div class="ph-ph"><span>Team / PSEG</span></div>
+      <div class="ph-cap">PSEG Institute Programs</div>
+    </div>
+    <!-- ============================================
+         IMAGE SLOT 5 — BOTTOM RIGHT
+         <img src="YOUR_XR_PHOTO.jpg" alt="XR Demo">
+         ============================================ -->
+    <div class="ph-cell pop" role="listitem">
+      <div class="ph-ph"><span>XR / VR Demo</span></div>
+      <div class="ph-cap">Extended Reality Research</div>
+    </div>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+
+<div class="sec">
+  <div class="sec-hd">
+    <h2 class="ht">THE <span>FOUNDATION</span></h2>
+    <span class="eye">Education &amp; Certifications</span>
+  </div>
+  <div class="edu2">
+    <article class="card educ pop">
+      <div class="educ-deg">M.S. Applied Urban Science &amp; Informatics</div>
+      <div class="educ-sch">NYU Tandon School of Engineering</div>
+      <div class="educ-det">Concentration: Computer Graphics &amp; Clean Energy · ML · Deep Learning · Applied Data Science</div>
+    </article>
+    <article class="card educ pop">
+      <div class="educ-deg">B.S. Information Technology</div>
+      <div class="educ-sch">Montclair State University, School of Computing</div>
+      <div class="educ-det">Minor: GIS · Computer Security · Database Systems · Remote Sensing</div>
+    </article>
+  </div>
+  <div class="cert3" role="list">
+    <div class="card certc pop" role="listitem">
+      <div class="cdot pend"></div>
+      <div><div class="cn">CompTIA Security+ SY0-701</div><div class="cs">In Progress · 2025</div></div>
+    </div>
+    <div class="card certc pop" role="listitem">
+      <div class="cdot"></div>
+      <div><div class="cn">Hands-On Introduction to Optics</div><div class="cs">SPIE · May 2023 · Damon Diego</div></div>
+    </div>
+    <div class="card certc pop" role="listitem">
+      <div class="cdot"></div>
+      <div><div class="cn">LSAMP Award Winner</div><div class="cs">Minority Participation · 2022</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+
+<section class="contact-wrap" id="contact" aria-labelledby="c-hd">
+  <div class="contact-box">
+    <div>
+      <h2 class="c-hd" id="c-hd">LET'S BUILD<br>SOMETHING<br><em>Good.</em></h2>
+      <p class="c-desc">Open to data strategy, cybersecurity analytics, and program management roles — remote or New York / Connecticut area.</p>
+      <p class="c-witty">My inbox responds faster than most dashboards load. That's a feature, not a bug.</p>
+    </div>
+    <nav class="cl-list" aria-label="Contact methods">
+      <a href="mailto:cumberbatci1@gmail.com" class="cl">
+        <span class="cl-l">Email</span><span class="cl-v">cumberbatci1@gmail.com</span><span class="cl-a">→</span>
+      </a>
+      <a href="tel:5519980317" class="cl">
+        <span class="cl-l">Phone</span><span class="cl-v">(551) 998-0317</span><span class="cl-a">→</span>
+      </a>
+      <!-- ============================================
+           LINK: href="https://linkedin.com/in/YOUR_USERNAME"
+           ============================================ -->
+      <a href="https://linkedin.com/in/YOUR_USERNAME" class="cl">
+        <span class="cl-l">LinkedIn</span><span class="cl-v">Add your LinkedIn URL</span><span class="cl-a">→</span>
+      </a>
+      <!-- ============================================
+           LINK: Replace with your GitHub Pages URL
+           ============================================ -->
+      <a href="#" class="cl">
+        <span class="cl-l">Portfolio</span><span class="cl-v">Add live site URL</span><span class="cl-a">→</span>
+      </a>
+      <a href="https://scholar.google.com/scholar?q=Iman+S.+Cumberbatch" target="_blank" rel="noopener noreferrer" class="cl">
+        <span class="cl-l">Scholar</span><span class="cl-v">View all publications</span><span class="cl-a">→</span>
+      </a>
+    </nav>
+  </div>
+</section>
+
+</main>
+
+<footer role="contentinfo">
+  <span class="ft-n">Iman S. Cumberbatch</span>
+  <p class="ft-c">Data · Cyber · Earth · Lenapehoking · © 2025</p>
+</footer>
+
+<script>
+// Cursor
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+});
+(function a(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(a);})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';curR.style.opacity='0';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.opacity='1';});
+});
+
+// Scroll reveal
+const pref=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(!pref){
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*55);obs.unobserve(e.target);}
+    });
+  },{threshold:0.07,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.pop').forEach(el=>obs.observe(el));
+}else{
+  document.querySelectorAll('.pop').forEach(el=>el.classList.add('in'));
+}
+
+// Active nav
+const links=document.querySelectorAll('.nav-links a');
+new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>{l.removeAttribute('aria-current');if(l.getAttribute('href')==='#'+e.target.id)l.setAttribute('aria-current','page');});
+    }
+  });
+},{threshold:0.4}).observe&&document.querySelectorAll('[id]').forEach(s=>s);
+</script>
+
+</body>
+</html>
