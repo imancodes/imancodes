@@ -514,9 +514,13 @@ display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:10px;
 width:100%;
+align-items:start;
 }
-@media(max-width:1300px) {
+@media(max-width:900px) {
 .j4 { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:500px) {
+.j4 { grid-template-columns:1fr; }
 }
 
 .jc { padding:22px 18px 20px; position:relative; overflow:hidden; }
@@ -944,7 +948,7 @@ RESPONSIVE
 nav,.sec,.logo-sec,.contact-wrap,footer { padding-left:28px; padding-right:28px; }
 .hero { padding:56px 28px 40px; grid-template-columns:1fr; min-height:auto; }
 .hero-right { position:static; }
-.j4,.sk6 { grid-template-columns:repeat(2,1fr); }
+.sk6 { grid-template-columns:repeat(2,1fr); }
 .exp3,.sp2,.edu2 { grid-template-columns:1fr; }
 .pub-bento { grid-template-columns:1fr 1fr; }
 .pb.feat { grid-row:span 1; }
@@ -963,6 +967,12 @@ nav,footer { padding-left:16px; padding-right:16px; }
 .photo-grid { grid-template-columns:1fr; }
 .stats { flex-wrap:wrap; }
 .stat { flex:1 1 45%; }
+}
+
+/* Hide cursor dots on touch/iPad */
+@media (hover:none),(pointer:coarse) {
+.cur, .cur-r { display:none !important; }
+body { cursor:auto !important; }
 }
 </style>
 
@@ -1018,7 +1028,7 @@ nav,footer { padding-left:16px; padding-right:16px; }
 <section class="hero" aria-labelledby="hero-h">
 
   <div class="hero-left">
-    <p class="land">From Lenapehoking — ancestral homeland of the Lenape people</p>
+    <p class="land" style="opacity:1;transform:none;">From Lenapehoking — ancestral homeland of the Lenape people</p>
 
 ```
 <h1 class="hero-name" id="hero-h">
@@ -1680,17 +1690,34 @@ nav,footer { padding-left:16px; padding-right:16px; }
 </footer>
 
 <script>
-// Cursor
-const cur=document.getElementById('cur'),curR=document.getElementById('curR');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cur.style.left=mx+'px';cur.style.top=my+'px';
+// Show all content after short delay - fallback
+document.addEventListener('DOMContentLoaded', ()=>{
+  setTimeout(()=>document.querySelectorAll('.pop').forEach(el=>el.classList.add('in')), 300);
 });
-(function a(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(a);})();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';curR.style.opacity='0';});
-  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.opacity='1';});
+
+// Cursor - only on non-touch devices
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+const isTouch = window.matchMedia('(hover:none) and (pointer:coarse)').matches;
+if(isTouch){
+  cur.style.display='none';
+  curR.style.display='none';
+  document.body.style.cursor='auto';
+} else {
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    cur.style.left=mx+'px';cur.style.top=my+'px';
+  });
+  (function a(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(a);})();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';curR.style.opacity='0';});
+    el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.opacity='1';});
+  });
+}
+
+// Show hero immediately
+document.querySelectorAll('.hero .pop, .hero-left .pop, .hero-right .pop, .logo-sec .pop').forEach(el=>{
+  el.classList.add('in');
 });
 
 // Scroll reveal
@@ -1705,7 +1732,7 @@ if(!pref){
   // Fallback: show all after 2 seconds in case observer misses
   setTimeout(()=>{
     document.querySelectorAll('.pop:not(.in)').forEach(el=>el.classList.add('in'));
-  }, 2000);
+  }, 500);
 }else{
   document.querySelectorAll('.pop').forEach(el=>el.classList.add('in'));
 }
