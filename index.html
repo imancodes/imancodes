@@ -12,30 +12,13 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PALETTE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-:root {
-–sky-top:    #0A1628;
-–sky-mid:    #0D2040;
-–sky-low:    #1A3A5C;
-–sky-dawn:   #2A5580;
-–-gold:       #F0C040;
-–-gold-lt:    #F8D870;
-–-gold-glow:  rgba(240,192,64,0.18);
-–pink:       #E87090;
-–teal:       #40D0B0;
-–cream:      #F0EEE8;
-–cream-dim:  rgba(240,238,232,0.6);
-–cream-faint:rgba(240,238,232,0.3);
-–card-bg:    rgba(10,22,40,0.72);
-–card-border:rgba(240,192,64,0.14);
-–card-hover: rgba(240,192,64,0.22);
-}
 
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 
 body {
 font-family:‘Outfit’,sans-serif;
-color:var(–cream);
+color:#F0EEE8;
 overflow-x:hidden;
 min-height:100vh;
 cursor:none;
@@ -223,7 +206,7 @@ CURSOR
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .cur {
 width:8px; height:8px;
-background:var(-–gold);
+background:#F0C040;
 border-radius:50%;
 position:fixed; pointer-events:none; z-index:9999;
 transform:translate(-50%,-50%);
@@ -243,13 +226,13 @@ SKIP NAV
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .skip {
 position:absolute; top:-60px; left:16px;
-background:var(–-gold); color:#000;
+background:#F0C040; color:#000;
 padding:8px 18px; font-size:0.76rem; font-weight:700;
 text-decoration:none; z-index:9999;
 border-radius:0 0 6px 6px; transition:top 0.2s;
 }
 .skip:focus { top:0; }
-:focus-visible { outline:2px solid var(–-gold); outline-offset:3px; }
+:focus-visible { outline:2px solid #F0C040; outline-offset:3px; }
 
 /* All content above sky */
 nav, main, footer { position:relative; z-index:10; }
@@ -272,15 +255,15 @@ height:54px;
 .nav-logo {
 font-family:‘Dancing Script’,cursive;
 font-size:1.4rem; font-weight:700;
-color:var(–-gold); text-decoration:none;
+color:#F0C040; text-decoration:none;
 }
 .nav-links { display:flex; gap:32px; list-style:none; }
 .nav-links a {
 font-family:‘DM Mono’,monospace;
 font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase;
-color:var(–cream-dim); text-decoration:none; transition:color 0.2s;
+color:rgba(240,238,232,0.6); text-decoration:none; transition:color 0.2s;
 }
-.nav-links a:hover { color:var(–-gold); }
+.nav-links a:hover { color:#F0C040; }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 HERO
@@ -312,12 +295,12 @@ padding-left:12px; line-height:1.6;
 font-family:‘Bebas Neue’,sans-serif;
 font-size:clamp(5rem,11vw,11rem);
 line-height:0.88; letter-spacing:0.02em;
-color:var(–cream);
+color:#F0EEE8;
 margin-bottom:6px;
 }
 .hero-name .script {
 font-family:‘Dancing Script’,cursive;
-font-size:0.42em; color:var(-–gold);
+font-size:0.42em; color:#F0C040;
 display:block; line-height:1.2;
 letter-spacing:0.01em;
 }
@@ -326,7 +309,7 @@ letter-spacing:0.01em;
 .hero-tagline {
 font-family:‘Outfit’,sans-serif;
 font-size:clamp(0.95rem,1.4vw,1.15rem);
-color:var(–cream-dim);
+color:rgba(240,238,232,0.6);
 line-height:1.85;
 max-width:520px;
 margin-bottom:32px;
@@ -334,7 +317,7 @@ font-weight:300;
 }
 
 .hero-tagline strong {
-color:var(–cream);
+color:#F0EEE8;
 font-weight:600;
 }
 
@@ -355,29 +338,29 @@ transition:background 0.2s;
 .sn {
 font-family:‘Bebas Neue’,sans-serif;
 font-size:1.9rem; line-height:1;
-color:var(–-gold); margin-bottom:3px;
+color:#F0C040; margin-bottom:3px;
 }
 .sl {
 font-family:‘DM Mono’,monospace;
 font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase;
-color:var(–cream-faint);
+color:rgba(240,238,232,0.3);
 }
 
 /* Buttons */
 .btns { display:flex; gap:10px; flex-wrap:wrap; }
 .btn-g {
 padding:11px 28px;
-background:var(–-gold); color:#060E1C;
+background:#F0C040; color:#060E1C;
 font-family:‘Bebas Neue’,sans-serif;
 font-size:1.1rem; letter-spacing:0.1em;
 text-decoration:none; border-radius:8px;
 transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
 display:inline-block;
 }
-.btn-g:hover { background:var(–-gold-lt); transform:translateY(-3px); box-shadow:0 10px 28px rgba(240,192,64,0.25); }
+.btn-g:hover { background:#F8D870; transform:translateY(-3px); box-shadow:0 10px 28px rgba(240,192,64,0.25); }
 .btn-o {
 padding:11px 28px;
-background:transparent; color:var(–cream);
+background:transparent; color:#F0EEE8;
 border:1.5px solid rgba(240,238,232,0.2);
 font-family:‘Bebas Neue’,sans-serif;
 font-size:1.1rem; letter-spacing:0.1em;
@@ -385,7 +368,7 @@ text-decoration:none; border-radius:8px;
 transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
 display:inline-block;
 }
-.btn-o:hover { border-color:var(-–gold); color:var(–-gold); transform:translateY(-2px); }
+.btn-o:hover { border-color:#F0C040; color:#F0C040; transform:translateY(-2px); }
 
 /* Hero right sidebar */
 .hero-right {
@@ -393,13 +376,13 @@ display:flex; flex-direction:column; gap:10px;
 }
 
 .hcard {
-background:var(–card-bg);
-border:1px solid var(–card-border);
+background:rgba(10,22,40,0.72);
+border:1px solid rgba(240,192,64,0.14);
 border-radius:12px; padding:16px 18px;
 backdrop-filter:blur(12px);
 transition:border-color 0.2s;
 }
-.hcard:hover { border-color:var(–card-hover); }
+.hcard:hover { border-color:rgba(240,192,64,0.22); }
 
 /* ============================================
 PHOTO — HEADSHOT
@@ -429,15 +412,15 @@ border:1px solid rgba(64,208,176,0.25);
 border-radius:100px;
 font-family:‘DM Mono’,monospace;
 font-size:0.58rem; letter-spacing:0.08em;
-color:var(–teal);
+color:#40D0B0;
 }
-.adot { width:6px; height:6px; border-radius:50%; background:var(–teal); animation:blink 2s infinite; }
+.adot { width:6px; height:6px; border-radius:50%; background:#40D0B0; animation:blink 2s infinite; }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
 
 .hc-lbl {
 font-family:‘DM Mono’,monospace;
 font-size:0.52rem; letter-spacing:0.16em; text-transform:uppercase;
-color:var(–cream-faint); margin-bottom:8px; display:block;
+color:rgba(240,238,232,0.3); margin-bottom:8px; display:block;
 }
 .pill-wrap { display:flex; flex-wrap:wrap; gap:5px; }
 .pill {
@@ -449,7 +432,7 @@ color:rgba(240,192,64,0.7);
 background:rgba(240,192,64,0.05);
 transition:all 0.15s;
 }
-.pill:hover { background:rgba(240,192,64,0.14); color:var(–-gold); }
+.pill:hover { background:rgba(240,192,64,0.14); color:#F0C040; }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 LOGO STRIP
@@ -461,7 +444,7 @@ padding:0 64px 56px;
 .ls-lbl {
 font-family:‘DM Mono’,monospace;
 font-size:0.52rem; letter-spacing:0.18em; text-transform:uppercase;
-color:var(–cream-faint); text-align:center; margin-bottom:18px;
+color:rgba(240,238,232,0.3); text-align:center; margin-bottom:18px;
 }
 .logo-row { display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap; }
 .litem { display:flex; flex-direction:column; align-items:center; gap:5px; opacity:0.4; transition:opacity 0.25s,transform 0.25s; }
@@ -474,14 +457,14 @@ background:rgba(240,192,64,0.05);
 display:flex; align-items:center; justify-content:center;
 font-family:‘Bebas Neue’,sans-serif;
 font-size:0.92rem; letter-spacing:0.06em;
-color:var(–-gold);
+color:#F0C040;
 transition:background 0.2s;
 }
 .litem:hover .lbox { background:rgba(240,192,64,0.12); }
 .lname {
 font-family:‘DM Mono’,monospace;
 font-size:0.5rem; letter-spacing:0.08em; text-transform:uppercase;
-color:var(–cream-faint);
+color:rgba(240,238,232,0.3);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -497,28 +480,28 @@ border-bottom:1px solid rgba(240,192,64,0.12);
 h2.ht {
 font-family:‘Bebas Neue’,sans-serif;
 font-size:clamp(2.8rem,5vw,4.8rem);
-line-height:0.9; letter-spacing:0.04em; color:var(–cream);
+line-height:0.9; letter-spacing:0.04em; color:#F0EEE8;
 }
-h2.ht span { color:var(–-gold); }
+h2.ht span { color:#F0C040; }
 .eye {
 font-family:‘DM Mono’,monospace;
 font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase;
-color:var(–cream-faint); padding-bottom:4px;
+color:rgba(240,238,232,0.3); padding-bottom:4px;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 CARD BASE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .card {
-background:var(–card-bg);
-border:1px solid var(–card-border);
+background:rgba(10,22,40,0.72);
+border:1px solid rgba(240,192,64,0.14);
 border-radius:14px;
 backdrop-filter:blur(12px);
 transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
 overflow:hidden;
 }
 .card:hover {
-border-color:var(–card-hover);
+border-color:rgba(240,192,64,0.22);
 transform:translateY(-5px);
 box-shadow:0 16px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(240,192,64,0.08);
 }
@@ -531,7 +514,7 @@ JOURNEY — 4 ACROSS
 .jc { padding:22px 18px 20px; position:relative; overflow:hidden; }
 .jc::before {
 content:’’; position:absolute; top:0; left:0; right:0; height:2px;
-background:var(–-gold);
+background:#F0C040;
 transform:scaleX(0); transform-origin:left; transition:transform 0.3s;
 }
 .jc:hover::before { transform:scaleX(1); }
@@ -548,19 +531,19 @@ font-family:‘DM Mono’,monospace;
 font-size:0.54rem; letter-spacing:0.14em; text-transform:uppercase;
 color:rgba(240,192,64,0.6); margin-bottom:8px;
 }
-.jc.now .jyr { color:var(–-gold); }
+.jc.now .jyr { color:#F0C040; }
 .jc h3 {
 font-family:‘Bebas Neue’,sans-serif;
 font-size:1.35rem; letter-spacing:0.04em;
-color:var(–cream); margin-bottom:8px; line-height:1.05;
+color:#F0EEE8; margin-bottom:8px; line-height:1.05;
 }
-.jc p { font-size:0.78rem; color:var(–cream-dim); line-height:1.7; margin-bottom:12px; }
+.jc p { font-size:0.78rem; color:rgba(240,238,232,0.6); line-height:1.7; margin-bottom:12px; }
 .chips { display:flex; flex-wrap:wrap; gap:4px; }
 .chip {
 font-family:‘DM Mono’,monospace;
 font-size:0.5rem; padding:2px 7px;
 border:1px solid rgba(240,238,232,0.1);
-border-radius:100px; color:var(–cream-faint);
+border-radius:100px; color:rgba(240,238,232,0.3);
 }
 .jc.now .chip { border-color:rgba(240,192,64,0.28); color:rgba(240,192,64,0.8); }
 .mission {
@@ -577,14 +560,14 @@ SKILLS — 6 ACROSS
 .skc { padding:18px 14px; position:relative; overflow:hidden; }
 .skc::after {
 content:’’; position:absolute; top:0; left:0; right:0; height:2px;
-background:var(–teal);
+background:#40D0B0;
 transform:scaleX(0); transform-origin:left; transition:transform 0.3s;
 }
 .skc:hover::after { transform:scaleX(1); }
 .skc h3 {
 font-family:‘Bebas Neue’,sans-serif;
 font-size:0.95rem; letter-spacing:0.06em;
-color:var(–cream); margin-bottom:10px;
+color:#F0EEE8; margin-bottom:10px;
 }
 .sktags { display:flex; flex-wrap:wrap; gap:4px; }
 .skt {
@@ -592,10 +575,10 @@ font-family:‘DM Mono’,monospace;
 font-size:0.52rem; padding:2px 7px;
 background:rgba(64,208,176,0.06);
 border:1px solid rgba(64,208,176,0.12);
-border-radius:100px; color:var(–cream-dim);
+border-radius:100px; color:rgba(240,238,232,0.6);
 transition:all 0.15s;
 }
-.skt:hover { background:rgba(64,208,176,0.14); border-color:rgba(64,208,176,0.3); color:var(–teal); }
+.skt:hover { background:rgba(64,208,176,0.14); border-color:rgba(64,208,176,0.3); color:#40D0B0; }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EXPERIENCE — 3 ACROSS
@@ -608,25 +591,25 @@ border-bottom:1px solid rgba(240,192,64,0.08);
 .ec .ec-co {
 font-family:‘DM Mono’,monospace;
 font-size:0.54rem; letter-spacing:0.12em; text-transform:uppercase;
-color:var(–pink); margin-bottom:4px;
+color:#E87090; margin-bottom:4px;
 }
 .ec .ec-t {
 font-family:‘Bebas Neue’,sans-serif;
 font-size:1.05rem; letter-spacing:0.04em;
-color:var(–cream); line-height:1.1;
+color:#F0EEE8; line-height:1.1;
 }
 .ec .ec-d {
 font-family:‘DM Mono’,monospace;
-font-size:0.5rem; color:var(–cream-faint); margin-top:3px;
+font-size:0.5rem; color:rgba(240,238,232,0.3); margin-top:3px;
 }
 .ec .ec-body { padding:12px 18px 16px; }
 .ec .ep {
-font-size:0.76rem; color:var(–cream-dim);
+font-size:0.76rem; color:rgba(240,238,232,0.6);
 line-height:1.65; padding-left:11px; position:relative; margin-bottom:4px;
 }
 .ec .ep::before {
 content:’’; position:absolute; left:0; top:8px;
-width:3px; height:3px; border-radius:50%; background:var(-–gold);
+width:3px; height:3px; border-radius:50%; background:#F0C040;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -645,20 +628,20 @@ gap:10px;
 .pv {
 font-family:‘DM Mono’,monospace;
 font-size:0.52rem; letter-spacing:0.14em; text-transform:uppercase;
-color:var(–-gold); margin-bottom:7px;
+color:#F0C040; margin-bottom:7px;
 display:flex; align-items:center; gap:6px;
 }
-.pv::before { content:’’; width:8px; height:1px; background:var(–-gold); }
-.pb.under .pv { color:var(–pink); }
-.pb.under .pv::before { background:var(–pink); }
+.pv::before { content:’’; width:8px; height:1px; background:#F0C040; }
+.pb.under .pv { color:#E87090; }
+.pb.under .pv::before { background:#E87090; }
 
 .pt {
 font-family:‘Outfit’,sans-serif;
 font-weight:500; font-size:0.86rem;
-color:var(–cream); line-height:1.4; margin-bottom:6px;
+color:#F0EEE8; line-height:1.4; margin-bottom:6px;
 }
-.pa { font-size:0.72rem; color:var(–cream-faint); line-height:1.5; }
-.pa strong { color:var(–cream-dim); }
+.pa { font-size:0.72rem; color:rgba(240,238,232,0.3); line-height:1.5; }
+.pa strong { color:rgba(240,238,232,0.6); }
 .pbadge {
 display:inline-block; margin-top:8px;
 font-family:‘DM Mono’,monospace;
@@ -675,25 +658,25 @@ SPEAKING — 2 WIDE
 .spc { padding:26px 24px; position:relative; overflow:hidden; }
 .spc::before {
 content:’’; position:absolute; top:0; left:0; right:0; height:2px;
-background:linear-gradient(90deg,var(–-gold),var(–teal));
+background:linear-gradient(90deg,#F0C040,#40D0B0);
 }
 .spc:hover { box-shadow:0 14px 36px rgba(240,192,64,0.1); }
 .syr {
 font-family:‘DM Mono’,monospace;
 font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase;
-color:var(-–gold); margin-bottom:10px;
+color:#F0C040; margin-bottom:10px;
 }
 .spc h3 {
 font-family:‘Bebas Neue’,sans-serif;
 font-size:1.7rem; letter-spacing:0.04em;
-color:var(–cream); margin-bottom:8px; line-height:1;
+color:#F0EEE8; margin-bottom:8px; line-height:1;
 }
-.spc p { font-size:0.8rem; color:var(–cream-dim); line-height:1.7; }
+.spc p { font-size:0.8rem; color:rgba(240,238,232,0.6); line-height:1.7; }
 .sloc {
 display:inline-block; margin-top:12px;
 font-family:‘DM Mono’,monospace;
 font-size:0.52rem; letter-spacing:0.1em; text-transform:uppercase;
-color:var(–cream-faint); padding:2px 10px;
+color:rgba(240,238,232,0.3); padding:2px 10px;
 border:1px solid rgba(240,238,232,0.1); border-radius:100px;
 }
 
@@ -745,33 +728,33 @@ EDUCATION
 .educ-deg {
 font-family:‘Bebas Neue’,sans-serif;
 font-size:1.15rem; letter-spacing:0.04em;
-color:var(–cream); margin-bottom:4px; line-height:1.1;
+color:#F0EEE8; margin-bottom:4px; line-height:1.1;
 }
 .educ-sch {
 font-family:‘DM Mono’,monospace;
 font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase;
-color:var(-–gold); margin-bottom:6px;
+color:#F0C040; margin-bottom:6px;
 }
-.educ-det { font-size:0.76rem; color:var(–cream-faint); line-height:1.6; }
+.educ-det { font-size:0.76rem; color:rgba(240,238,232,0.3); line-height:1.6; }
 
 .cert3 { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
 .certc { padding:12px 16px; display:flex; align-items:center; gap:10px; }
-.cdot { width:7px; height:7px; border-radius:50%; background:var(-–gold); flex-shrink:0; }
+.cdot { width:7px; height:7px; border-radius:50%; background:#F0C040; flex-shrink:0; }
 .cdot.pend {
-background:transparent; border:2px solid var(–teal);
+background:transparent; border:2px solid #40D0B0;
 animation:cpulse 2s infinite;
 }
-@keyframes cpulse { 0%,100%{border-color:var(–teal);} 50%{border-color:var(–-gold);} }
-.cn { font-size:0.76rem; font-weight:500; color:var(–cream); }
-.cs { font-family:‘DM Mono’,monospace; font-size:0.54rem; color:var(–cream-faint); }
+@keyframes cpulse { 0%,100%{border-color:#40D0B0;} 50%{border-color:#F0C040;} }
+.cn { font-size:0.76rem; font-weight:500; color:#F0EEE8; }
+.cs { font-family:‘DM Mono’,monospace; font-size:0.54rem; color:rgba(240,238,232,0.3); }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 CONTACT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .contact-wrap { max-width:1380px; margin:0 auto; padding:0 64px 72px; }
 .contact-box {
-background:var(–card-bg);
-border:1px solid var(–card-border);
+background:rgba(10,22,40,0.72);
+border:1px solid rgba(240,192,64,0.14);
 border-radius:20px; padding:56px;
 display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;
 backdrop-filter:blur(16px);
@@ -787,10 +770,10 @@ top:-120px; right:-80px; pointer-events:none;
 font-family:‘Bebas Neue’,sans-serif;
 font-size:clamp(2.8rem,5vw,5rem);
 line-height:0.9; letter-spacing:0.04em;
-color:var(–cream); margin-bottom:14px;
+color:#F0EEE8; margin-bottom:14px;
 }
-.c-hd em { font-family:‘Dancing Script’,cursive; font-style:normal; color:var(–-gold); font-size:0.8em; }
-.c-desc { font-size:0.88rem; color:var(–cream-dim); line-height:1.8; margin-bottom:18px; max-width:380px; }
+.c-hd em { font-family:‘Dancing Script’,cursive; font-style:normal; color:#F0C040; font-size:0.8em; }
+.c-desc { font-size:0.88rem; color:rgba(240,238,232,0.6); line-height:1.8; margin-bottom:18px; max-width:380px; }
 .c-witty {
 font-family:‘DM Mono’,monospace; font-style:italic;
 font-size:0.68rem; color:rgba(240,192,64,0.5); line-height:1.6;
@@ -815,12 +798,12 @@ transition:all 0.2s;
 .cl-l {
 font-family:‘DM Mono’,monospace;
 font-size:0.52rem; letter-spacing:0.1em; text-transform:uppercase;
-color:var(–cream-faint); width:60px; flex-shrink:0;
+color:rgba(240,238,232,0.3); width:60px; flex-shrink:0;
 }
-.cl-v { font-size:0.82rem; font-weight:400; color:var(–cream-dim); transition:color 0.2s; }
-.cl:hover .cl-v { color:var(–-gold); }
-.cl-a { margin-left:auto; color:var(–cream-faint); font-size:0.8rem; transition:all 0.2s; }
-.cl:hover .cl-a { color:var(–-gold); transform:translateX(3px); }
+.cl-v { font-size:0.82rem; font-weight:400; color:rgba(240,238,232,0.6); transition:color 0.2s; }
+.cl:hover .cl-v { color:#F0C040; }
+.cl-a { margin-left:auto; color:rgba(240,238,232,0.3); font-size:0.8rem; transition:all 0.2s; }
+.cl:hover .cl-a { color:#F0C040; transform:translateX(3px); }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 FOOTER
@@ -829,11 +812,11 @@ footer {
 max-width:1380px; margin:0 auto; padding:0 64px 32px;
 display:flex; justify-content:space-between; align-items:center;
 }
-.ft-n { font-family:‘Dancing Script’,cursive; font-size:1.1rem; color:var(-–gold); }
+.ft-n { font-family:‘Dancing Script’,cursive; font-size:1.1rem; color:#F0C040; }
 .ft-c {
 font-family:‘DM Mono’,monospace;
 font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase;
-color:var(–cream-faint);
+color:rgba(240,238,232,0.3);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -896,19 +879,19 @@ padding:3px 10px;border-radius:100px;
 .proj-cat {
 font-family:‘DM Mono’,monospace;
 font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;
-color:var(–teal);margin-bottom:6px;
+color:#40D0B0;margin-bottom:6px;
 display:flex;align-items:center;gap:6px;
 }
-.proj-cat::before { content:’’;width:8px;height:1px;background:var(–teal); }
+.proj-cat::before { content:’’;width:8px;height:1px;background:#40D0B0; }
 
 .proj-title {
 font-family:‘Bebas Neue’,sans-serif;
 font-size:1.15rem;letter-spacing:0.04em;
-color:var(–cream);margin-bottom:8px;line-height:1.1;
+color:#F0EEE8;margin-bottom:8px;line-height:1.1;
 }
 
 .proj-desc {
-font-size:0.78rem;color:var(–cream-dim);
+font-size:0.78rem;color:rgba(240,238,232,0.6);
 line-height:1.7;margin-bottom:12px;
 }
 
@@ -919,14 +902,14 @@ font-family:‘DM Mono’,monospace;
 font-size:0.52rem;padding:2px 8px;
 background:rgba(64,208,176,0.06);
 border:1px solid rgba(64,208,176,0.15);
-border-radius:100px;color:var(–cream-dim);
+border-radius:100px;color:rgba(240,238,232,0.6);
 transition:all 0.15s;
 }
 
 .proj-tag:hover {
 background:rgba(64,208,176,0.14);
 border-color:rgba(64,208,176,0.35);
-color:var(–teal);
+color:#40D0B0;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1098,10 +1081,10 @@ nav,footer { padding-left:16px; padding-right:16px; }
 <div class="hcard">
   <span class="hc-lbl">Published In</span>
   <div style="display:flex;flex-direction:column;gap:5px;">
-    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid var(--gold);">MDPI Sustainability · 2025</div>
-    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid var(--gold);">Springer CCIS · iLRN 2025</div>
-    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid var(--gold);">IEEE LISAT · 2023</div>
-    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid var(--gold);">SPIE · 2023</div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid #F0C040;">MDPI Sustainability · 2025</div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid #F0C040;">Springer CCIS · iLRN 2025</div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid #F0C040;">IEEE LISAT · 2023</div>
+    <div style="font-family:'DM Mono',monospace;font-size:0.56rem;letter-spacing:0.08em;color:rgba(240,192,64,0.7);padding:5px 8px;background:rgba(240,192,64,0.07);border-radius:5px;border-left:2px solid #F0C040;">SPIE · 2023</div>
   </div>
 </div>
 ```
@@ -1184,7 +1167,7 @@ nav,footer { padding-left:16px; padding-right:16px; }
     <div class="card skc pop"><h3>Analytics &amp; BI</h3><div class="sktags"><span class="skt">Power BI</span><span class="skt">Tableau</span><span class="skt">Python</span><span class="skt">SQL</span><span class="skt">ArcGIS</span><span class="skt">DAX</span></div></div>
     <div class="card skc pop"><h3>AI &amp; ML</h3><div class="sktags"><span class="skt">TensorFlow</span><span class="skt">PyTorch</span><span class="skt">Deep Learning</span><span class="skt">OpenAI</span><span class="skt">Hugging Face</span></div></div>
     <div class="card skc pop"><h3>XR &amp; Viz</h3><div class="sktags"><span class="skt">Unity</span><span class="skt">C#</span><span class="skt">Meta Quest 2</span><span class="skt">Ultraleap</span><span class="skt">AutoCAD</span></div></div>
-    <div class="card skc pop"><h3>Proj./Prog. Mgmt</h3><div class="sktags"><span class="skt">Agile</span><span class="skt">SDLC</span><span class="skt">JIRA</span><span class="skt">Risk Mgmt</span><span class="skt">Budgeting</span></div></div>
+    <div class="card skc pop"><h3>Prog. Mgmt</h3><div class="sktags"><span class="skt">Agile</span><span class="skt">SDLC</span><span class="skt">JIRA</span><span class="skt">Risk Mgmt</span><span class="skt">Budgeting</span></div></div>
     <div class="card skc pop"><h3>Cybersecurity</h3><div class="sktags"><span class="skt">Security+</span><span class="skt">Network Sec.</span><span class="skt">Sys. Admin</span><span class="skt">Unix</span><span class="skt">NIST</span></div></div>
     <div class="card skc pop"><h3>Dev</h3><div class="sktags"><span class="skt">Java</span><span class="skt">C++</span><span class="skt">JavaScript</span><span class="skt">HTML/CSS</span><span class="skt">Arduino</span></div></div>
   </div>
@@ -1288,7 +1271,7 @@ nav,footer { padding-left:16px; padding-right:16px; }
       <p class="pa"><strong>Cumberbatch, I.S.</strong> et al. · PSEG Institute, MSU</p>
       <span class="pbadge">Journal Article</span>
       <!-- ============================================
-           LINK: <a href="https://www.mdpi.com/2071-1050/18/5/2188">Read →</a>
+           LINK: <a href="https://doi.org/10.3390/su18052188">Read →</a>
            ============================================ -->
     </article>
     <article class="card pb pop">
@@ -1351,7 +1334,13 @@ nav,footer { padding-left:16px; padding-right:16px; }
             style="width:100%;height:160px;object-fit:cover;display:block;">
        ============================================ -->
   <div class="proj-img">
-    <div class="IMG_1719.jpeg"><span>Eco-Bot</span></div>
+    <!-- ============================================
+         IMAGE SLOT — ECO-BOT
+         Upload IMG_1719.jpeg to GitHub then replace
+         the placeholder below with:
+         <img src="IMG_1719.jpeg" alt="Eco-Bot" style="width:100%;height:160px;object-fit:cover;display:block;">
+         ============================================ -->
+    <div class="proj-img-slot"><span>Eco-Bot — Add IMG_1719.jpeg</span></div>
   </div>
   <div class="proj-body">
     <div class="proj-cat">Environmental Monitoring · Geospatial</div>
@@ -1376,7 +1365,12 @@ nav,footer { padding-left:16px; padding-right:16px; }
             style="width:100%;height:160px;object-fit:cover;display:block;">
        ============================================ -->
   <div class="proj-img">
-    <div class="IMG_1720.jpeg"><span>GHG Inventory</span></div>
+    <!-- ============================================
+         IMAGE SLOT — GREENHOUSE GAS
+         Upload IMG_1720.jpeg to GitHub then replace with:
+         <img src="IMG_1720.jpeg" alt="GHG Inventory" style="width:100%;height:160px;object-fit:cover;display:block;">
+         ============================================ -->
+    <div class="proj-img-slot"><span>GHG — Add IMG_1720.jpeg</span></div>
   </div>
   <div class="proj-body">
     <div class="proj-cat">Municipality · Climate Analytics</div>
@@ -1401,7 +1395,7 @@ nav,footer { padding-left:16px; padding-right:16px; }
             style="width:100%;height:160px;object-fit:cover;display:block;">
        ============================================ -->
   <div class="proj-img">
-    <div class="proj-img-slot"><span>XR Education</span></div>
+    <div class="proj-img-slot"><span>Add screenshot</span></div>
   </div>
   <div class="proj-body">
     <div class="proj-cat">Extended Reality · Education</div>
@@ -1426,7 +1420,12 @@ nav,footer { padding-left:16px; padding-right:16px; }
             style="width:100%;height:160px;object-fit:cover;display:block;">
        ============================================ -->
   <div class="proj-img">
-    <div class="IMG_1722.jpeg"><span>Estimation</span></div>
+    <!-- ============================================
+         IMAGE SLOT — CAR PRICE
+         Upload IMG_1722.jpeg to GitHub then replace with:
+         <img src="IMG_1722.jpeg" alt="Car Price Estimation" style="width:100%;height:160px;object-fit:cover;display:block;">
+         ============================================ -->
+    <div class="proj-img-slot"><span>Car Price — Add IMG_1722.jpeg</span></div>
   </div>
   <div class="proj-body">
     <div class="proj-cat">Data Science · Predictive Modeling</div>
@@ -1542,10 +1541,14 @@ nav,footer { padding-left:16px; padding-right:16px; }
   <div class="photo-grid" role="list">
     <!-- ============================================
          IMAGE SLOT 1 — TALL LEFT
-         <img src="_P2A9023.jpeg" alt="[describe]">
+         <img src="YOUR_MAIN_PHOTO.jpg" alt="[describe]">
          ============================================ -->
     <div class="ph-cell tall pop" role="listitem">
-      <div class="ph-ph"><span>Main photo — UN / Speaking</span></div>
+      <!-- ============================================
+           IMAGE SLOT 1 — Upload _P2A9023.jpeg to GitHub then replace with:
+           <img src="_P2A9023.jpeg" alt="UN HESI Global Forum">
+           ============================================ -->
+      <div class="ph-ph"><span>Add _P2A9023.jpeg</span></div>
       <div class="ph-cap">UN HESI Global Forum</div>
     </div>
     <!-- ============================================
@@ -1558,18 +1561,26 @@ nav,footer { padding-left:16px; padding-right:16px; }
     </div>
     <!-- ============================================
          IMAGE SLOT 3 — TOP RIGHT
-         <img src="PHOTO-2025-04-23-11-08-12.jpeg" alt="Work">
+         <img src="YOUR_WORK_PHOTO.jpg" alt="Work">
          ============================================ -->
     <div class="ph-cell pop" role="listitem">
-      <div class="ph-ph"><span>Work / Data</span></div>
+      <!-- ============================================
+           IMAGE SLOT 3 — Upload PHOTO-2025-04-23-11-08-12.jpeg then replace with:
+           <img src="PHOTO-2025-04-23-11-08-12.jpeg" alt="Con Edison work">
+           ============================================ -->
+      <div class="ph-ph"><span>Add PHOTO-2025-04-23-11-08-12.jpeg</span></div>
       <div class="ph-cap">Con Edison Power BI</div>
     </div>
     <!-- ============================================
          IMAGE SLOT 4 — BOTTOM MIDDLE
-         <img src="IMG_7801.jpeg" alt="Team">
+         <img src="YOUR_TEAM_PHOTO.jpg" alt="Team">
          ============================================ -->
     <div class="ph-cell pop" role="listitem">
-      <div class="ph-ph"><span>Team / PSEG</span></div>
+      <!-- ============================================
+           IMAGE SLOT 4 — Upload IMG_7801.jpeg then replace with:
+           <img src="IMG_7801.jpeg" alt="PSEG Institute Programs">
+           ============================================ -->
+      <div class="ph-ph"><span>Add IMG_7801.jpeg</span></div>
       <div class="ph-cap">PSEG Institute Programs</div>
     </div>
     <!-- ============================================
@@ -1631,16 +1642,24 @@ nav,footer { padding-left:16px; padding-right:16px; }
       <a href="mailto:cumberbatci1@gmail.com" class="cl">
         <span class="cl-l">Email</span><span class="cl-v">cumberbatci1@gmail.com</span><span class="cl-a">→</span>
       </a>
-      <a href="tel:(332) 203-4836" class="cl">
+      <a href="tel:3322034836" class="cl">
         <span class="cl-l">Phone</span><span class="cl-v">(332) 203-4836</span><span class="cl-a">→</span>
       </a>
       <!-- ============================================
            LINK: href="https://www.linkedin.com/in/icumberbatch/"
            ============================================ -->
       <a href="https://www.linkedin.com/in/icumberbatch/" class="cl">
-        <span class="cl-l">LinkedIn</span><span class="cl-v">LinkedIn</span><span class="cl-a">→</span>
+        <span class="cl-l">LinkedIn</span><span class="cl-v">linkedin.com/in/icumberbatch</span><span class="cl-a">→</span>
       </a>
-    
+      <!-- ============================================
+           LINK: Replace with your GitHub Pages URL
+           ============================================ -->
+      <a href="https://imancodes.github.io/imancodes" class="cl">
+        <span class="cl-l">Portfolio</span><span class="cl-v">imancodes.github.io/imancodes</span><span class="cl-a">→</span>
+      </a>
+      <a href="https://scholar.google.com/scholar?q=Iman+S.+Cumberbatch" target="_blank" rel="noopener noreferrer" class="cl">
+        <span class="cl-l">Scholar</span><span class="cl-v">View all publications</span><span class="cl-a">→</span>
+      </a>
     </nav>
   </div>
 </section>
@@ -1692,4 +1711,3 @@ new IntersectionObserver(entries=>{
 
 </body>
 </html>
-
