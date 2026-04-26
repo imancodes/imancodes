@@ -754,7 +754,7 @@ color:var(–gold); margin-bottom:6px;
 }
 .educ-det { font-size:0.76rem; color:var(–cream-faint); line-height:1.6; }
 
-.cert3 { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.cert3 { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
 .certc { padding:12px 16px; display:flex; align-items:center; gap:10px; }
 .cdot { width:7px; height:7px; border-radius:50%; background:var(–gold); flex-shrink:0; }
 .cdot.pend {
@@ -834,6 +834,99 @@ display:flex; justify-content:space-between; align-items:center;
 font-family:‘DM Mono’,monospace;
 font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase;
 color:var(–cream-faint);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROJECTS — BENTO GRID
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.proj-grid {
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+}
+
+.proj-card {
+padding:0;
+position:relative;
+overflow:hidden;
+}
+
+/* ============================================
+PROJECT IMAGE SLOTS
+Replace each .proj-img-slot with:
+<img src="YOUR_PROJECT_SCREENSHOT.jpg"
+alt="Project name"
+style="width:100%;height:160px;object-fit:cover;display:block;">
+============================================ */
+.proj-img {
+width:100%;
+height:160px;
+overflow:hidden;
+position:relative;
+background:rgba(240,192,64,0.05);
+}
+
+.proj-img img {
+width:100%;height:100%;
+object-fit:cover;display:block;
+transition:transform 0.4s ease;
+}
+
+.proj-card:hover .proj-img img { transform:scale(1.06); }
+
+.proj-img-slot {
+width:100%;height:160px;
+display:flex;align-items:center;justify-content:center;
+background:repeating-linear-gradient(
+45deg,rgba(240,192,64,0.03),rgba(240,192,64,0.03) 8px,
+transparent 8px,transparent 16px
+);
+}
+
+.proj-img-slot span {
+font-family:‘DM Mono’,monospace;
+font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;
+color:rgba(240,192,64,0.35);
+background:rgba(6,14,28,0.8);
+padding:3px 10px;border-radius:100px;
+}
+
+.proj-body { padding:18px 18px 16px; }
+
+.proj-cat {
+font-family:‘DM Mono’,monospace;
+font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;
+color:var(–teal);margin-bottom:6px;
+display:flex;align-items:center;gap:6px;
+}
+.proj-cat::before { content:’’;width:8px;height:1px;background:var(–teal); }
+
+.proj-title {
+font-family:‘Bebas Neue’,sans-serif;
+font-size:1.15rem;letter-spacing:0.04em;
+color:var(–cream);margin-bottom:8px;line-height:1.1;
+}
+
+.proj-desc {
+font-size:0.78rem;color:var(–cream-dim);
+line-height:1.7;margin-bottom:12px;
+}
+
+.proj-tags { display:flex;flex-wrap:wrap;gap:5px; }
+
+.proj-tag {
+font-family:‘DM Mono’,monospace;
+font-size:0.52rem;padding:2px 8px;
+background:rgba(64,208,176,0.06);
+border:1px solid rgba(64,208,176,0.15);
+border-radius:100px;color:var(–cream-dim);
+transition:all 0.15s;
+}
+
+.proj-tag:hover {
+background:rgba(64,208,176,0.14);
+border-color:rgba(64,208,176,0.35);
+color:var(–teal);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -917,7 +1010,9 @@ nav,footer { padding-left:16px; padding-right:16px; }
       <li><a href="#journey">Journey</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#work">Work</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#research">Research</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -952,10 +1047,10 @@ nav,footer { padding-left:16px; padding-right:16px; }
 </p>
 
 <div class="stats" role="list">
-  <div class="stat" role="listitem"><div class="sn">6+</div><div class="sl">Yrs Consulting</div></div>
+  <div class="stat" role="listitem"><div class="sn">5+</div><div class="sl">Yrs Consulting</div></div>
   <div class="stat" role="listitem"><div class="sn">5</div><div class="sl">Publications</div></div>
   <div class="stat" role="listitem"><div class="sn">2×</div><div class="sl">UN Speaker</div></div>
-  <div class="stat" role="listitem"><div class="sn">$50K+</div><div class="sl">Partnership Won</div></div>
+  <div class="stat" role="listitem"><div class="sn">$50K</div><div class="sl">Partnership Won</div></div>
   <div class="stat" role="listitem"><div class="sn">50+</div><div class="sl">People Led</div></div>
 </div>
 
@@ -973,14 +1068,6 @@ nav,footer { padding-left:16px; padding-right:16px; }
 
 ```
 <div class="hcard">
-  <!-- ============================================
-       PHOTO — HEADSHOT
-       Replace .ph-slot with:
-       <img src="YOUR_HEADSHOT.jpg" alt="Iman Cumberbatch"
-            style="width:100%;height:220px;object-fit:cover;
-                   border-radius:10px;display:block;margin-bottom:10px;">
-       ============================================ -->
-  <div class="ph-slot"><span>Add headshot</span></div>
   <div class="avail">
     <span class="adot" aria-hidden="true"></span>
     Available Now
@@ -994,7 +1081,7 @@ nav,footer { padding-left:16px; padding-right:16px; }
     <span class="pill">Tableau</span><span class="pill">SQL</span>
     <span class="pill">ArcGIS</span><span class="pill">Unity</span>
     <span class="pill">TensorFlow</span><span class="pill">XR</span>
-    <span class="pill">Security+</span><span class="pill">GRC</span>
+    <span class="pill">GRC</span>
   </div>
 </div>
 
@@ -1052,8 +1139,8 @@ nav,footer { padding-left:16px; padding-right:16px; }
       <div class="jnum" aria-hidden="true">01</div>
       <div class="jyr">2018 – 2022</div>
       <h3>The Foundation</h3>
-      <p>B.S. IT at Montclair State. Systems admin, security, GIS. Learning how technology actually works so I could one day make it work better for people.</p>
-      <div class="chips"><span class="chip">IT Degree</span><span class="chip">Systems Admin</span><span class="chip">Security</span><span class="chip">GIS</span></div>
+      <p>Technology is powerful. It is also, for most people, invisible — and that invisibility is not an accident. I started in IT because I wanted to understand how systems actually work. But the deeper question was always: <em>who gets left out when they don't?</em> Data literacy, environmental sensing, GIS — these aren't just technical skills. They are tools for helping people understand what is happening in their own neighborhoods, their own air, their own world. Technology should not be something that happens <em>to</em> communities. It should be something communities can read, question, and use.</p>
+      <div class="chips"><span class="chip">IT Degree</span><span class="chip">Systems Admin</span><span class="chip">Security</span><span class="chip">GIS</span><span class="chip">Tech Literacy</span><span class="chip">Access &amp; Equity</span></div>
     </article>
 
 ```
@@ -1246,6 +1333,170 @@ nav,footer { padding-left:16px; padding-right:16px; }
   </div>
 </div>
 
+<!-- PROJECTS -->
+
+<div class="sec" id="projects">
+  <div class="sec-hd">
+    <h2 class="ht">THE <span>PROJECTS</span></h2>
+    <span class="eye">Built · Researched · Shipped</span>
+  </div>
+  <div class="proj-grid">
+
+```
+<article class="card proj-card pop">
+  <!-- ============================================
+       IMAGE SLOT — ECO-BOT
+       Replace .proj-img-slot with:
+       <img src="ecobot.jpg" alt="Eco-Bot screenshot"
+            style="width:100%;height:160px;object-fit:cover;display:block;">
+       ============================================ -->
+  <div class="proj-img">
+    <div class="proj-img-slot"><span>Add screenshot</span></div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-cat">Environmental Monitoring · Geospatial</div>
+    <div class="proj-title">Eco-Bot Urban Heat Monitoring &amp; Visualization</div>
+    <p class="proj-desc">IoT system monitoring urban heat islands using GPS and humidity sensors. Data collected, visualized spatially, and used to inform sustainability decisions.</p>
+    <div class="proj-tags">
+      <span class="proj-tag">Python</span>
+      <span class="proj-tag">IoT Prototyping</span>
+      <span class="proj-tag">Spatial Analytics</span>
+      <span class="proj-tag">ArcGIS Pro</span>
+      <span class="proj-tag">Public Visual</span>
+      <span class="proj-tag">Storytelling</span>
+    </div>
+  </div>
+</article>
+
+<article class="card proj-card pop">
+  <!-- ============================================
+       IMAGE SLOT — GREENHOUSE GAS
+       Replace .proj-img-slot with:
+       <img src="ghg.jpg" alt="Greenhouse Gas Inventory screenshot"
+            style="width:100%;height:160px;object-fit:cover;display:block;">
+       ============================================ -->
+  <div class="proj-img">
+    <div class="proj-img-slot"><span>Add screenshot</span></div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-cat">Municipality · Climate Analytics</div>
+    <div class="proj-title">Greenhouse Gas Inventory — City of Newark, NJ</div>
+    <p class="proj-desc">Developed a full greenhouse gas inventory for Newark's Office of Sustainability using ICLEI ClearPath. Data-informed carbon reduction action plan presented to city leadership.</p>
+    <div class="proj-tags">
+      <span class="proj-tag">Python</span>
+      <span class="proj-tag">ArcGIS Pro</span>
+      <span class="proj-tag">Excel</span>
+      <span class="proj-tag">Carbon Analytics</span>
+      <span class="proj-tag">Public Speaking</span>
+      <span class="proj-tag">Prediction</span>
+    </div>
+  </div>
+</article>
+
+<article class="card proj-card pop">
+  <!-- ============================================
+       IMAGE SLOT — XR SCIENCE EDUCATION
+       Replace .proj-img-slot with:
+       <img src="xr-education.jpg" alt="XR Science Education screenshot"
+            style="width:100%;height:160px;object-fit:cover;display:block;">
+       ============================================ -->
+  <div class="proj-img">
+    <div class="proj-img-slot"><span>Add screenshot</span></div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-cat">Extended Reality · Education</div>
+    <div class="proj-title">Using Extended Reality Technology in Science Education</div>
+    <p class="proj-desc">Built XR learning environments using Unity and ArcGIS to visualize complex environmental data. Published as peer-reviewed research at IEEE LISAT 2023.</p>
+    <div class="proj-tags">
+      <span class="proj-tag">Unity</span>
+      <span class="proj-tag">ArcGIS Pro</span>
+      <span class="proj-tag">Data Visualization</span>
+      <span class="proj-tag">Surveying</span>
+      <span class="proj-tag">Project Management</span>
+      <span class="proj-tag">IEEE Published</span>
+    </div>
+  </div>
+</article>
+
+<article class="card proj-card pop">
+  <!-- ============================================
+       IMAGE SLOT — CAR PRICE
+       Replace .proj-img-slot with:
+       <img src="carprice.jpg" alt="Car Price Estimation screenshot"
+            style="width:100%;height:160px;object-fit:cover;display:block;">
+       ============================================ -->
+  <div class="proj-img">
+    <div class="proj-img-slot"><span>Add screenshot</span></div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-cat">Data Science · Predictive Modeling</div>
+    <div class="proj-title">Car Price Estimation Using Predictive Data Mining</div>
+    <p class="proj-desc">Predictive analytics model that estimates whether a user's car budget aligns with their desired make and model. Built using data mining and ML techniques.</p>
+    <div class="proj-tags">
+      <span class="proj-tag">Python</span>
+      <span class="proj-tag">Pandas</span>
+      <span class="proj-tag">Matplotlib</span>
+      <span class="proj-tag">NumPy</span>
+      <span class="proj-tag">Scikit-learn</span>
+      <span class="proj-tag">Excel</span>
+    </div>
+  </div>
+</article>
+
+<article class="card proj-card pop">
+  <!-- ============================================
+       IMAGE SLOT — CON EDISON
+       Replace .proj-img-slot with:
+       <img src="conedison-project.jpg" alt="Con Edison Clean Energy screenshot"
+            style="width:100%;height:160px;object-fit:cover;display:block;">
+       ============================================ -->
+  <div class="proj-img">
+    <div class="proj-img-slot"><span>Add screenshot</span></div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-cat">Clean Energy · Policy Analytics</div>
+    <div class="proj-title">Clean Energy Transition — Con Edison</div>
+    <p class="proj-desc">Final capstone project presented at Con Edison HQ. Built a Python ML model analyzing energy adoption trends and an executive Power BI dashboard that influenced NY State incentive policy.</p>
+    <div class="proj-tags">
+      <span class="proj-tag">Power BI</span>
+      <span class="proj-tag">Python</span>
+      <span class="proj-tag">Machine Learning</span>
+      <span class="proj-tag">Clean Energy</span>
+      <span class="proj-tag">Data Science</span>
+      <span class="proj-tag">Energy Efficiency</span>
+    </div>
+  </div>
+</article>
+
+<article class="card proj-card pop">
+  <!-- ============================================
+       IMAGE SLOT — DEFORESTATION XR
+       Replace .proj-img-slot with:
+       <img src="deforestation.jpg" alt="Deforestation XR screenshot"
+            style="width:100%;height:160px;object-fit:cover;display:block;">
+       ============================================ -->
+  <div class="proj-img">
+    <div class="proj-img-slot"><span>Add screenshot</span></div>
+  </div>
+  <div class="proj-body">
+    <div class="proj-cat">Extended Reality · Environmental Data</div>
+    <div class="proj-title">XR Environment for Urban Area Environmental Data Analysis</div>
+    <p class="proj-desc">Interactive VR-based geospatial tool visualizing deforestation data and urban expansion policies in extended reality. Published at SPIE Conference, Orlando 2023.</p>
+    <div class="proj-tags">
+      <span class="proj-tag">Unity</span>
+      <span class="proj-tag">C#</span>
+      <span class="proj-tag">Meta Quest 2</span>
+      <span class="proj-tag">ArcGIS</span>
+      <span class="proj-tag">Data Visualization</span>
+      <span class="proj-tag">SPIE Published</span>
+    </div>
+  </div>
+</article>
+```
+
+  </div>
+</div>
+
 <!-- SPEAKING -->
 
 <div class="sec">
@@ -1356,14 +1607,14 @@ nav,footer { padding-left:16px; padding-right:16px; }
       <div class="cdot pend"></div>
       <div><div class="cn">CompTIA Security+ SY0-701</div><div class="cs">In Progress · 2025</div></div>
     </div>
-    <div class="card certc pop" role="listitem">
-      <div class="cdot"></div>
-      <div><div class="cn">Hands-On Introduction to Optics</div><div class="cs">SPIE · May 2023 · Damon Diego</div></div>
-    </div>
-    <div class="card certc pop" role="listitem">
-      <div class="cdot"></div>
-      <div><div class="cn">LSAMP Award Winner</div><div class="cs">Minority Participation · 2022</div></div>
-    </div>
+
+```
+<div class="card certc pop" role="listitem">
+  <div class="cdot"></div>
+  <div><div class="cn">LSAMP Award Winner</div><div class="cs">Minority Participation · 2022</div></div>
+</div>
+```
+
   </div>
 </div>
 
@@ -1449,3 +1700,4 @@ new IntersectionObserver(entries=>{
 
 </body>
 </html>
+
