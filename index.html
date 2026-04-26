@@ -17,9 +17,9 @@ PALETTE
 –sky-mid:    #0D2040;
 –sky-low:    #1A3A5C;
 –sky-dawn:   #2A5580;
-–gold:       #F0C040;
-–gold-lt:    #F8D870;
-–gold-glow:  rgba(240,192,64,0.18);
+–-gold:       #F0C040;
+–-gold-lt:    #F8D870;
+–-gold-glow:  rgba(240,192,64,0.18);
 –pink:       #E87090;
 –teal:       #40D0B0;
 –cream:      #F0EEE8;
@@ -223,7 +223,7 @@ CURSOR
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .cur {
 width:8px; height:8px;
-background:var(–gold);
+background:var(-–gold);
 border-radius:50%;
 position:fixed; pointer-events:none; z-index:9999;
 transform:translate(-50%,-50%);
@@ -243,13 +243,13 @@ SKIP NAV
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .skip {
 position:absolute; top:-60px; left:16px;
-background:var(–gold); color:#000;
+background:var(–-gold); color:#000;
 padding:8px 18px; font-size:0.76rem; font-weight:700;
 text-decoration:none; z-index:9999;
 border-radius:0 0 6px 6px; transition:top 0.2s;
 }
 .skip:focus { top:0; }
-:focus-visible { outline:2px solid var(–gold); outline-offset:3px; }
+:focus-visible { outline:2px solid var(–-gold); outline-offset:3px; }
 
 /* All content above sky */
 nav, main, footer { position:relative; z-index:10; }
@@ -272,7 +272,7 @@ height:54px;
 .nav-logo {
 font-family:‘Dancing Script’,cursive;
 font-size:1.4rem; font-weight:700;
-color:var(–gold); text-decoration:none;
+color:var(–-gold); text-decoration:none;
 }
 .nav-links { display:flex; gap:32px; list-style:none; }
 .nav-links a {
@@ -280,7 +280,7 @@ font-family:‘DM Mono’,monospace;
 font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase;
 color:var(–cream-dim); text-decoration:none; transition:color 0.2s;
 }
-.nav-links a:hover { color:var(–gold); }
+.nav-links a:hover { color:var(–-gold); }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 HERO
@@ -317,7 +317,7 @@ margin-bottom:6px;
 }
 .hero-name .script {
 font-family:‘Dancing Script’,cursive;
-font-size:0.42em; color:var(–gold);
+font-size:0.42em; color:var(-–gold);
 display:block; line-height:1.2;
 letter-spacing:0.01em;
 }
@@ -355,7 +355,7 @@ transition:background 0.2s;
 .sn {
 font-family:‘Bebas Neue’,sans-serif;
 font-size:1.9rem; line-height:1;
-color:var(–gold); margin-bottom:3px;
+color:var(–-gold); margin-bottom:3px;
 }
 .sl {
 font-family:‘DM Mono’,monospace;
@@ -367,14 +367,14 @@ color:var(–cream-faint);
 .btns { display:flex; gap:10px; flex-wrap:wrap; }
 .btn-g {
 padding:11px 28px;
-background:var(–gold); color:#060E1C;
+background:var(–-gold); color:#060E1C;
 font-family:‘Bebas Neue’,sans-serif;
 font-size:1.1rem; letter-spacing:0.1em;
 text-decoration:none; border-radius:8px;
 transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
 display:inline-block;
 }
-.btn-g:hover { background:var(–gold-lt); transform:translateY(-3px); box-shadow:0 10px 28px rgba(240,192,64,0.25); }
+.btn-g:hover { background:var(–-gold-lt); transform:translateY(-3px); box-shadow:0 10px 28px rgba(240,192,64,0.25); }
 .btn-o {
 padding:11px 28px;
 background:transparent; color:var(–cream);
@@ -385,7 +385,7 @@ text-decoration:none; border-radius:8px;
 transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
 display:inline-block;
 }
-.btn-o:hover { border-color:var(–gold); color:var(–gold); transform:translateY(-2px); }
+.btn-o:hover { border-color:var(-–gold); color:var(–-gold); transform:translateY(-2px); }
 
 /* Hero right sidebar */
 .hero-right {
@@ -449,7 +449,7 @@ color:rgba(240,192,64,0.7);
 background:rgba(240,192,64,0.05);
 transition:all 0.15s;
 }
-.pill:hover { background:rgba(240,192,64,0.14); color:var(–gold); }
+.pill:hover { background:rgba(240,192,64,0.14); color:var(–-gold); }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 LOGO STRIP
@@ -474,7 +474,7 @@ background:rgba(240,192,64,0.05);
 display:flex; align-items:center; justify-content:center;
 font-family:‘Bebas Neue’,sans-serif;
 font-size:0.92rem; letter-spacing:0.06em;
-color:var(–gold);
+color:var(–-gold);
 transition:background 0.2s;
 }
 .litem:hover .lbox { background:rgba(240,192,64,0.12); }
@@ -499,7 +499,7 @@ font-family:‘Bebas Neue’,sans-serif;
 font-size:clamp(2.8rem,5vw,4.8rem);
 line-height:0.9; letter-spacing:0.04em; color:var(–cream);
 }
-h2.ht span { color:var(–gold); }
+h2.ht span { color:var(–-gold); }
 .eye {
 font-family:‘DM Mono’,monospace;
 font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase;
@@ -531,7 +531,7 @@ JOURNEY — 4 ACROSS
 .jc { padding:22px 18px 20px; position:relative; overflow:hidden; }
 .jc::before {
 content:’’; position:absolute; top:0; left:0; right:0; height:2px;
-background:var(–gold);
+background:var(–-gold);
 transform:scaleX(0); transform-origin:left; transition:transform 0.3s;
 }
 .jc:hover::before { transform:scaleX(1); }
@@ -548,7 +548,7 @@ font-family:‘DM Mono’,monospace;
 font-size:0.54rem; letter-spacing:0.14em; text-transform:uppercase;
 color:rgba(240,192,64,0.6); margin-bottom:8px;
 }
-.jc.now .jyr { color:var(–gold); }
+.jc.now .jyr { color:var(–-gold); }
 .jc h3 {
 font-family:‘Bebas Neue’,sans-serif;
 font-size:1.35rem; letter-spacing:0.04em;
@@ -626,7 +626,7 @@ line-height:1.65; padding-left:11px; position:relative; margin-bottom:4px;
 }
 .ec .ep::before {
 content:’’; position:absolute; left:0; top:8px;
-width:3px; height:3px; border-radius:50%; background:var(–gold);
+width:3px; height:3px; border-radius:50%; background:var(-–gold);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -645,10 +645,10 @@ gap:10px;
 .pv {
 font-family:‘DM Mono’,monospace;
 font-size:0.52rem; letter-spacing:0.14em; text-transform:uppercase;
-color:var(–gold); margin-bottom:7px;
+color:var(–-gold); margin-bottom:7px;
 display:flex; align-items:center; gap:6px;
 }
-.pv::before { content:’’; width:8px; height:1px; background:var(–gold); }
+.pv::before { content:’’; width:8px; height:1px; background:var(–-gold); }
 .pb.under .pv { color:var(–pink); }
 .pb.under .pv::before { background:var(–pink); }
 
@@ -675,13 +675,13 @@ SPEAKING — 2 WIDE
 .spc { padding:26px 24px; position:relative; overflow:hidden; }
 .spc::before {
 content:’’; position:absolute; top:0; left:0; right:0; height:2px;
-background:linear-gradient(90deg,var(–gold),var(–teal));
+background:linear-gradient(90deg,var(–-gold),var(–teal));
 }
 .spc:hover { box-shadow:0 14px 36px rgba(240,192,64,0.1); }
 .syr {
 font-family:‘DM Mono’,monospace;
 font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase;
-color:var(–gold); margin-bottom:10px;
+color:var(-–gold); margin-bottom:10px;
 }
 .spc h3 {
 font-family:‘Bebas Neue’,sans-serif;
@@ -750,18 +750,18 @@ color:var(–cream); margin-bottom:4px; line-height:1.1;
 .educ-sch {
 font-family:‘DM Mono’,monospace;
 font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase;
-color:var(–gold); margin-bottom:6px;
+color:var(-–gold); margin-bottom:6px;
 }
 .educ-det { font-size:0.76rem; color:var(–cream-faint); line-height:1.6; }
 
 .cert3 { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
 .certc { padding:12px 16px; display:flex; align-items:center; gap:10px; }
-.cdot { width:7px; height:7px; border-radius:50%; background:var(–gold); flex-shrink:0; }
+.cdot { width:7px; height:7px; border-radius:50%; background:var(-–gold); flex-shrink:0; }
 .cdot.pend {
 background:transparent; border:2px solid var(–teal);
 animation:cpulse 2s infinite;
 }
-@keyframes cpulse { 0%,100%{border-color:var(–teal);} 50%{border-color:var(–gold);} }
+@keyframes cpulse { 0%,100%{border-color:var(–teal);} 50%{border-color:var(–-gold);} }
 .cn { font-size:0.76rem; font-weight:500; color:var(–cream); }
 .cs { font-family:‘DM Mono’,monospace; font-size:0.54rem; color:var(–cream-faint); }
 
@@ -789,7 +789,7 @@ font-size:clamp(2.8rem,5vw,5rem);
 line-height:0.9; letter-spacing:0.04em;
 color:var(–cream); margin-bottom:14px;
 }
-.c-hd em { font-family:‘Dancing Script’,cursive; font-style:normal; color:var(–gold); font-size:0.8em; }
+.c-hd em { font-family:‘Dancing Script’,cursive; font-style:normal; color:var(–-gold); font-size:0.8em; }
 .c-desc { font-size:0.88rem; color:var(–cream-dim); line-height:1.8; margin-bottom:18px; max-width:380px; }
 .c-witty {
 font-family:‘DM Mono’,monospace; font-style:italic;
@@ -818,9 +818,9 @@ font-size:0.52rem; letter-spacing:0.1em; text-transform:uppercase;
 color:var(–cream-faint); width:60px; flex-shrink:0;
 }
 .cl-v { font-size:0.82rem; font-weight:400; color:var(–cream-dim); transition:color 0.2s; }
-.cl:hover .cl-v { color:var(–gold); }
+.cl:hover .cl-v { color:var(–-gold); }
 .cl-a { margin-left:auto; color:var(–cream-faint); font-size:0.8rem; transition:all 0.2s; }
-.cl:hover .cl-a { color:var(–gold); transform:translateX(3px); }
+.cl:hover .cl-a { color:var(–-gold); transform:translateX(3px); }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 FOOTER
@@ -829,7 +829,7 @@ footer {
 max-width:1380px; margin:0 auto; padding:0 64px 32px;
 display:flex; justify-content:space-between; align-items:center;
 }
-.ft-n { font-family:‘Dancing Script’,cursive; font-size:1.1rem; color:var(–gold); }
+.ft-n { font-family:‘Dancing Script’,cursive; font-size:1.1rem; color:var(-–gold); }
 .ft-c {
 font-family:‘DM Mono’,monospace;
 font-size:0.5rem; letter-spacing:0.1em; text-transform:uppercase;
