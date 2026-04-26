@@ -271,7 +271,7 @@ HERO
 .hero {
 min-height:calc(100vh - 54px);
 max-width:1380px; margin:0 auto;
-padding:64px 64px 48px;
+padding:64px 40px 48px;
 display:grid;
 grid-template-columns:1fr 340px;
 gap:52px;
@@ -293,7 +293,7 @@ padding-left:12px; line-height:1.6;
 /* Name */
 .hero-name {
 font-family:‘Bebas Neue’,sans-serif;
-font-size:clamp(5rem,11vw,11rem);
+font-size:clamp(3rem,7vw,8rem);
 line-height:0.88; letter-spacing:0.02em;
 color:#F0EEE8;
 margin-bottom:6px;
@@ -509,7 +509,15 @@ box-shadow:0 16px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(240,192,64,0.08);
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 JOURNEY — 4 ACROSS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.j4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.j4 {
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+width:100%;
+}
+@media(max-width:1300px) {
+.j4 { grid-template-columns:repeat(2,1fr); }
+}
 
 .jc { padding:22px 18px 20px; position:relative; overflow:hidden; }
 .jc::before {
@@ -1692,8 +1700,12 @@ if(!pref){
     entries.forEach((e,i)=>{
       if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*55);obs.unobserve(e.target);}
     });
-  },{threshold:0.07,rootMargin:'0px 0px -20px 0px'});
+  },{threshold:0.01,rootMargin:'0px 0px 0px 0px'});
   document.querySelectorAll('.pop').forEach(el=>obs.observe(el));
+  // Fallback: show all after 2 seconds in case observer misses
+  setTimeout(()=>{
+    document.querySelectorAll('.pop:not(.in)').forEach(el=>el.classList.add('in'));
+  }, 2000);
 }else{
   document.querySelectorAll('.pop').forEach(el=>el.classList.add('in'));
 }
